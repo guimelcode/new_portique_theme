@@ -11,7 +11,7 @@ import {userInterfaceStart} from './user-interface/user-interface';
 
 const SammyApp = Sammy(function () {
   this.debug = true;
-  this.get('/portique_test_room/proj2/:lang/expositions/archives/:post', function() {
+  this.get('/:lang/expositions/archives/:post', function() {
     let postMessage = {
       'post_title' : this.params['post'],
       'post_ID' : undefined
@@ -29,7 +29,7 @@ const SammyApp = Sammy(function () {
     Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
 
   });
-  this.get('/portique_test_room/proj2/:lang/:name/:id/', function() {
+  this.get('/:lang/:name/:id/', function() {
     let urlMessage = {
       'category': this.params['name'],
       'rubrique': this.params['id']
@@ -37,7 +37,7 @@ const SammyApp = Sammy(function () {
     Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
 
   });
-  this.get('/portique_test_room/proj2/:lang/:name/', function() {
+  this.get('/:lang/:name/', function() {
     let urlMessage = {
       'category': this.params['name'],
       'rubrique': undefined
@@ -45,7 +45,7 @@ const SammyApp = Sammy(function () {
     Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
 
   });
-  this.get('/portique_test_room/proj2/:lang/', function() {
+  this.get('/:lang/', function() {
     let urlMessage = {
       'category': 'expositions',
       'rubrique': 'en-cours'
