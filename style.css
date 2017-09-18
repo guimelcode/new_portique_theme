@@ -1,0 +1,24 @@
+/*
+	Theme Name: new_portique-theme
+	Theme URI: http://html5blank.com
+	Description: Wordpress theme based on HTML5 Blank WordPress Theme
+	Version: 1.1
+	Authors: Mathias Schweizer, Mathieu Roquet, Guimel
+	Author URI: http://weizer.ch/
+	Tags: Blank, HTML5, CSS3, Bootstrap
+
+	License: MIT
+	License URI: http://opensource.org/licenses/mit-license.php
+
+  Ce fichier reprends des règles de Bootstrap (V3) et de Normalize,
+  tout en répondant aux spécificités de travail pour le Portique,
+  ainsi qu'un allègement des règles.
+
+  Parents : —	Bootstrap v3.3.6 (http://getbootstrap.com)
+  			Copyright 2011-2015 Twitter, Inc.
+  			Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  		  — normalize.css v3.0.2 | MIT License | git.io/normalize
+  		  — HTML5 Blank (http://html5blank.com) (pour WordPress)
+
+  Infos : 	— 24 colonnes, 12px de gouttière
+*/

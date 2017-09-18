@@ -1,0 +1,31 @@
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+FONTS
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+PORTYPE FONT REGULAR v1 - by Mathias Schweizer - http://weizer.ch
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+@font-face {
+  font-family: 'portype-regular';
+  src: url('../fonts/portype-regularclass-webfont.eot');
+  src: url('../fonts/portype-regularclass-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/portype-regularclass-webfont.woff2') format('woff2'),
+  url('../fonts/portype-regularclass-webfont.ttf') format('truetype'),
+  url('../fonts/portype-regularclass-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+PORTYPE FONT ITALIC v1 - by Mathias Schweizer - http://weizer.ch
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+@font-face {
+  font-family: 'portype-italic';
+  src: url('../fonts/portype-italic-webfont.eot');
+  src: url('../fonts/portype-italic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/portype-italic-webfont.woff2') format('woff2'),
+  url('../fonts/portype-italic-webfont.ttf') format('truetype'),
+  url('../fonts/portype-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}

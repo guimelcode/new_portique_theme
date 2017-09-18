@@ -1,0 +1,53 @@
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+GLOBAL HTML SETTINGS
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/* global box-sizing */
+*,
+*:after,
+*:before {
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  -webkit-font-smoothing:antialiased;
+  font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+/* html element 62.5% font-size for REM use */
+html {
+  font-size:12px;
+}
+
+body {
+  font-family: 'portype-regular', Helvetica, Arial, sans-serif;
+  color: #00f;
+  background: #fff;
+  font-size: .84em;
+  line-height: 1.2em;
+  font-weight: 100;
+}
+
+div {
+  -webkit-box-shadow: 0 0 0px transparent!important;
+  box-shadow: 0 0 0px transparent!important;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li, a, span {
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1em;
+}
+
+ul {
+  margin: 0;
+  padding: 0px;
+}
+
+.site {
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+}
