@@ -6,7 +6,8 @@ import {archivePost} from '../ajaxManager';
 // import * from './menu';
 export let SwipperSystem;
 
-const baseUrl = '/portique_test_room/proj2';
+//const baseUrl = '/portique_test_room/proj2';
+const baseUrl = '';
 
 
 function ContentClean(cb) {

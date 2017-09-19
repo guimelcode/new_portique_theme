@@ -1281,7 +1281,8 @@ $ = jQuery;
 // import * from './menu';
 var SwipperSystem = exports.SwipperSystem = void 0;
 
-var baseUrl = '/portique_test_room/proj2';
+//const baseUrl = '/portique_test_room/proj2';
+var baseUrl = '';
 
 function ContentClean(cb) {
   $('#app').fadeOut(300, function () {
