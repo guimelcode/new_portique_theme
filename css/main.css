@@ -78,6 +78,7 @@ NAVIGATION
   width: 100%;
   height: auto;
   position: relative;
+  font-size: 0.8em;
 }
 
 .landscape .navigation-top {
@@ -86,14 +87,13 @@ NAVIGATION
 
 .menu-main-container {
   height: 15vw;
-  font-size: 1.8em;
   border-bottom: solid 1px #00f;
   padding-bottom: 18px;
 }
 
 .landscape .menu-main-container {
   height: 16vh;
-  font-size: 1.6em;
+  /* font-size: 1.6em; */
   border-bottom: solid 1px #00f;
   padding-bottom: 10px;
 }
@@ -107,6 +107,9 @@ NAVIGATION
 .menu-main-container li {
   list-style: none;
 }
+/* - - - - - - - - - - - - - -
+        MENU
+ - - - - - - - - - - - - - - */
 
 .menu {
   z-index: 2000;
@@ -115,6 +118,7 @@ NAVIGATION
   background: #fff;
   transition: 1s;
 }
+
 
 #top-menu {
   transition-property: opacity;
@@ -132,18 +136,17 @@ NAVIGATION
   opacity: 0;
 }
 
-/*///*/
-
 .sub-menu {
   padding-top: 10px;
   position: absolute;
   top : 0;
-  margin: 0 -6px;
+  margin: 1.2em 0 -6px;
   padding: 0 12px 0 0;
   width : 76.92307692vw;
   list-style: none;
   visibility: hidden;
   z-index: 1;
+  /* font-size: 0.8em; */
   /* display: none; */
 }
 

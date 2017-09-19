@@ -21,7 +21,9 @@ SIGNATURE PORTIQUE
 }
 #signature-portique {
   font-size: 1.75em;
+  visibility: hidden;
 }
+
 #signature-portique > img{
   position: fixed;
   z-index: 3000;
@@ -95,4 +97,29 @@ SIGNATURE PORTIQUE
   width:100%;
   height: 0em;
   position: fixed;
+}
+
+
+/* - - - - - - - - - - - -
+  SIGNATURE MEDIA QUERIES
+- - - - - - - - - - - - */
+
+@media(min-width:576px){
+
+}
+
+@media(min-width:768px){
+  #signature-portique {
+    font-size: 1.75em;
+    visibility: visible;
+ }
+
+}
+
+@media(min-width:992px){
+
+}
+
+@media(min-width:1200px){
+
 }
