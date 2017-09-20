@@ -92,7 +92,7 @@ NAVIGATION
 }
 
 .landscape .menu-main-container {
-  height: 15vh;
+/*  height: 15vh; */
   /* font-size: 1.6em; */
   border-bottom: solid 1px #00f;
   padding-bottom: 10px;
@@ -195,12 +195,12 @@ ul.sub-menu > li.active > a{
 }
 
 .landscape #signature-portique_LP {
-  width: 50%;
+  width: 80%;
   padding: 5%;
-
   /*margin: 0 auto;
   display: block;*/
 }
+
 .logo-mobile {
   float: right;
   position: absolute;
@@ -259,9 +259,70 @@ SOCIAL MEDIA ICONS
 }
 .social-item a {
   position: relative;
-  font-size: 1.4em;
+  font-size: 0.2em;
 }
 .social-item a i {
   width: 100%;
   text-align: center;
+}
+
+.icon-2x {
+    font-size: 0.7em!important;
+}
+
+ul#mobile-footer > li > a{
+  margin-right: 7vw;
+}
+
+#mobile-footer a{
+  color: blue;
+}
+/* - - - - - - - - - -
+MOBILE FOOTER
+- - - - - - - - - - - */
+
+footer.container-fluid {
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+  padding-left: 7.5vw;
+  padding-right: 7.5vw;
+  background-color: #fff;
+  z-index: 3;
+}
+
+footer.container-fluid > .row{
+  border-top: solid blue 1px;
+}
+
+ul#mobile-footer{
+  list-style-type: none;
+  display: inline-flex;
+}
+
+/* - - - - - - - - - - - -
+  MAIN MEDIA QUERIES
+- - - - - - - - - - - - */
+
+@media(min-width:576px){
+  /* removing top border to footer menu */
+  footer.container-fluid > .row{
+    border-top: solid blue 1px;
+  }
+
+}
+
+@media(min-width:768px){
+  /* removing top border to footer menu */
+  footer.container-fluid > .row{
+    border-top: none;
+  }
+}
+
+@media(min-width:992px){
+
+}
+
+@media(min-width:1200px){
+
 }

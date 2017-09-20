@@ -31,11 +31,43 @@ div {
   box-shadow: 0 0 0px transparent!important;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, li, a, span {
-  font-size: 1.5em;
+h1, h2, h3, h4, h5, h6 {
+  font-size: 2.2em;
   font-weight: 100;
   line-height: 1.2em;
 }
+
+p{
+  font-size: 2em;
+  line-height: 1.2em;
+}
+
+ul, li{
+  font-size: 1.7em;
+  line-height: 1.2em;
+}
+
+
+a {
+  color: #0000ff;
+	text-decoration:none;
+  }
+
+a:hover {
+  text-decoration:none;
+  color: #8080ff;
+  transition: 0.7s;
+	}
+
+a:focus {
+  text-decoration:none;
+  outline:none
+	}
+
+a:active {
+  text-decoration:none;
+  outline:none
+	}
 
 ul {
   margin: 0;
