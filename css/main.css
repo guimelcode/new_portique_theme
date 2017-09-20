@@ -92,7 +92,7 @@ NAVIGATION
 }
 
 .landscape .menu-main-container {
-  height: 16vh;
+  height: 15vh;
   /* font-size: 1.6em; */
   border-bottom: solid 1px #00f;
   padding-bottom: 10px;
@@ -119,6 +119,16 @@ NAVIGATION
   transition: 1s;
 }
 
+/* Blinker Animation - Menu */
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+ul.sub-menu > li.active > a{
+  color: #00f;
+  transition: 0.3s;
+  animation: blinker 1.7s linear infinite;
+}
 
 #top-menu {
   transition-property: opacity;
@@ -146,7 +156,7 @@ NAVIGATION
   list-style: none;
   visibility: hidden;
   z-index: 1;
-  /* font-size: 0.8em; */
+  font-size: 0.65em;
   /* display: none; */
 }
 
@@ -198,6 +208,7 @@ NAVIGATION
   top: 0.4em;
   right: 0;
   z-index: 2000;
+  width: 80px;
 }
 .lp-home {
   display: block;
@@ -222,13 +233,13 @@ NAVIGATION
   50% {    transform: rotate(5deg);}
   75% {    transform: rotate(-5deg);}
   100% {    transform: rotate(0deg);}
-
 }
 
 .pre-mob {
   /*width: 84.61538462%;
   padding-right: 11.53846154%;*/
 }
+
 .pre-mob li{
   display: block !important;
   width: 50%;
@@ -238,7 +249,10 @@ NAVIGATION
   top: 1em;
 }
 
-/*Partie sociale*/
+
+/* - - - - - - - - - -
+SOCIAL MEDIA ICONS
+- - - - - - - - - - - */
 .social-item {
   display: block !important;
   position: relative;
