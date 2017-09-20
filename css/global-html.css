@@ -31,7 +31,7 @@ div {
   box-shadow: 0 0 0px transparent!important;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, li, a, span, p {
+h1, h2, h3, h4, h5, h6, p, ul, li, a, span {
   font-size: 1.5em;
   font-weight: 100;
   line-height: 1.2em;

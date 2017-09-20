@@ -20,7 +20,7 @@ SIGNATURE PORTIQUE
   /* background: linear-gradient(transparent, white, white); /* Standard syntax */
 }
 #signature-portique {
-  font-size: 1.75em;
+  font-size: 2.5em;
   visibility: hidden;
 }
 
@@ -37,7 +37,7 @@ SIGNATURE PORTIQUE
   /*Mobile / Have to add*/
   /*width: 2em;*/
   /*width: 80px;*/
-  width: 2.5em;
+  /* width: 2.5em; */
 }
 
 #signature-portique_PORTIQUE{
@@ -46,7 +46,7 @@ SIGNATURE PORTIQUE
   /*Mobile / Have to add*/
   /*width: 2em;*/
   /*width: 210px;*/
-  width: 4.55em;
+  /* width: 4.55em; */
 }
 
 #signature-portique_CENTRE-REGIONAL{
@@ -55,7 +55,7 @@ SIGNATURE PORTIQUE
   /*Mobile / Have to add*/
   /*width: 2em;*/
   /*width: 74px;*/
-  width: 2.5em;
+  /* width: 2.5em; */
 
 }
 
@@ -65,7 +65,7 @@ SIGNATURE PORTIQUE
   /*Mobile / Have to add*/
   /*width: 2em;*/
   /*width: 520px;*/
-  width: 10em;
+/*   width: 10em; */
 }
 
 /* signature margins */
