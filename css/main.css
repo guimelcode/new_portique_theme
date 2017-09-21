@@ -92,8 +92,8 @@ NAVIGATION
 }
 
 .landscape .menu-main-container {
-/*  height: 15vh; */
-  /* font-size: 1.6em; */
+ height: 15vh;
+ font-size: 1.6em;
   border-bottom: solid 1px #00f;
   padding-bottom: 10px;
 }
@@ -298,31 +298,4 @@ footer.container-fluid > .row{
 ul#mobile-footer{
   list-style-type: none;
   display: inline-flex;
-}
-
-/* - - - - - - - - - - - -
-  MAIN MEDIA QUERIES
-- - - - - - - - - - - - */
-
-@media(min-width:576px){
-  /* removing top border to footer menu */
-  footer.container-fluid > .row{
-    border-top: solid blue 1px;
-  }
-
-}
-
-@media(min-width:768px){
-  /* removing top border to footer menu */
-  footer.container-fluid > .row{
-    border-top: none;
-  }
-}
-
-@media(min-width:992px){
-
-}
-
-@media(min-width:1200px){
-
 }
