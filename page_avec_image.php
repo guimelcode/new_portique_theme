@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Nom du modèle
+Template Name: Page avec image
 */
 
 echo '<article class="row"name="'.$post->post_name.'">' ?>
