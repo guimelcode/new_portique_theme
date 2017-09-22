@@ -14,12 +14,15 @@
   width: 100%;
   /*height: 46vh;*/
 }
+
 .imgGal .img-prev-control, .imgGal .img-next-control {
   width: 50%;
   height: 100%;
   position: absolute;
   top: 0px;
 }
+
+
 
 /*.imgWrap {
     position: relative;
@@ -317,6 +320,10 @@ ul#mobile-footer{
 /* - - - - - - - - - -
 APP
 - - - - - - - - - - - */
+
+.swiper-button-disabled{
+  visibility: hidden;
+}
 /*
 #app > div{
   /* what if we use simplebar js library ?
@@ -326,3 +333,11 @@ APP
   height: 85vh;
 }
 */
+
+#app > div > .bxslider > .swiper-slide-active{
+  /* what if we use simplebar js library ? */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* depending on top-menu height... */
+  height: 85vh;
+}

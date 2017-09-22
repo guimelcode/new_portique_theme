@@ -2,6 +2,7 @@
 <?php echo '<article class="row"name="'.$post->post_name.'">' ?>
 
   <section class="thePostText francais col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-lg-offset-1 col-lg-9">
+<!--  <section class="thePostText francais col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-lg-offset-1 col-lg-9"> -->
     <header>
       <h1><?php echo get_the_title(); ?></h1>
       <h2><?php echo get_field("sous-titre"); ?></h2>
