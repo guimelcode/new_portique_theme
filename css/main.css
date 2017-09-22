@@ -21,14 +21,6 @@
   top: 0px;
 }
 
-.imgGal .img-next-control{
-
-}
-
-.imgGal .img-prev-control{
-
-}
-
 /*.imgWrap {
     position: relative;
     width: 100%;
@@ -72,13 +64,13 @@
     background-repeat: no-repeat;
 }
 .img-next-control{
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+/*  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); */
 
     right: 10px;
     left: auto;
 }
 .img-prev-control{
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+/*  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); */
 
     left: 10px;
     right: auto;
@@ -103,6 +95,9 @@ NAVIGATION
   margin-top: 2em;
 }
 
+/* - - - - - - - - - - - - - -
+MENU
+- - - - - - - - - - - - - - */
 .menu-main-container {
   height: 15vw;
   border-bottom: solid 1px #00f;
@@ -125,9 +120,6 @@ NAVIGATION
 .menu-main-container li {
   list-style: none;
 }
-/* - - - - - - - - - - - - - -
-        MENU
- - - - - - - - - - - - - - - */
 
 .menu {
   z-index: 2000;
@@ -321,3 +313,16 @@ ul#mobile-footer{
   list-style-type: none;
   display: inline-flex;
 }
+
+/* - - - - - - - - - -
+APP
+- - - - - - - - - - - */
+/*
+#app > div{
+  /* what if we use simplebar js library ?
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* depending on top-menu height...
+  height: 85vh;
+}
+*/
