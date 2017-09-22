@@ -1,16 +1,16 @@
 
 <?php echo '<article class="row"name="'.$post->post_name.'">' ?>
 
- <section class="thePostText francais col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-lg-offset-1 col-lg-9">
-    <header>
-      <h1><?php echo get_the_title(); ?></h1>
-      <h2><?php echo get_field("sous-titre"); ?></h2>
+ <section class="thePostText francais">
+ <!-- <section class="thePostText francais col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-lg-offset-1 col-lg-9"> -->
+    <header >
+      <h1 class="titre"><?php echo get_the_title(); ?></h1>
+      <h2 class="subtitle"><?php echo get_field("sous-titre"); ?></h2>
       <h3 class="temps"> du
         <time ><?php echo templateFormatDate(get_post_meta( get_the_ID(), 'date_debut_exposition', true )); ?></time>
         au
         <time ><?php echo templateFormatDate(get_post_meta( get_the_ID(), 'date_fin_exposition', true )); ?></time>
       </h3>
-
     </header>
     <main>
       <?php echo $content = apply_filters('the_content', $post->post_content); ?>
@@ -40,29 +40,21 @@
       ?>
       <div class="swiper-wrapper">
 
-
         <?php
-
         // loop through the rows of data
         while ( have_rows('fichiers_media') ) : the_row();
         $media = get_sub_field('media_file');
         $decription = get_sub_field('description_media');
 
         echo '<div class="swiper-slide col-xs-26">';
-
-
         echo '<img src="'.$media['url'].'"/>';
         echo '<h2>'.$decription.'</h2>';
         echo '</div>';
 
       endwhile;
-
-
       ?>
-
-
     </div>
   </div>
 </section>
-<?php   endif; ?>
+<?php endif; ?>
 </article>

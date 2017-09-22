@@ -18,7 +18,7 @@ webpack -w
 Pour l'instant
 
 ## TODO
-### Ajouter un champ d'ajout d'image via ACF dans (un template /template-parts/page_avec_image.php) : !NOTWORKING!
+### Ajouter un champ d'ajout d'image via ACF dans (un template page_avec_image.php) : !ALMOST WORKING!, à voir comment réprer cela 
   - Médiation/Jeunes Publics
   - Médiation/Scolaires
   - Information/Équipe
