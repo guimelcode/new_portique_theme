@@ -1,9 +1,9 @@
-/*
-Template Name: Page avec image
-*/
-
-
 <?php
+/**
+* Template Name: Page avec image
+*
+* @package newportique
+*/
 
 echo '<article class="row"name="'.$post->post_name.'">' ?>
 

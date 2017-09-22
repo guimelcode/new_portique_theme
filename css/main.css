@@ -341,3 +341,10 @@ APP
   /* depending on top-menu height... */
   height: 85vh;
 }
+
+/* - - - - - - - - - -
+ARTICLES
+- - - - - - - - - - - */
+.temps{
+  text-transform: uppercase;
+}

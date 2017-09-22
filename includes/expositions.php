@@ -1,9 +1,5 @@
 <?php
-
-
-
 function expositions(){
-
 
   ///TEST ///
   /* FOREACH ? */
@@ -20,7 +16,7 @@ function expositions(){
   //   </div>
   // </div>";
   echo "<div class='swiper-button-prev'></div><div class='swiper-button-next'></div>";
-  echo "<div  class='bxslider swiper-wrapper'>";
+  echo "<div class='bxslider swiper-wrapper'>";
   $args = date_test()[0];
 
 	$ajax_query = new WP_Query($args);
@@ -43,7 +39,7 @@ function expositions(){
     echo "<div class='en-cours swiper-slide'>";
     get_template_part( 'template-parts/article' );
     $counter++;
-    echo "</div >";
+    echo "</div>";
 	endwhile;
   endif;
 
