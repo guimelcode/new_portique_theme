@@ -365,6 +365,14 @@ ARTICLES
 .a-venir p{
 }
 
+.titre, .subtitle, .temps{
+  font-size: 3em;
+  line-height: 1.1em;
+}
+
+.thePostImages{
+  padding-bottom: 7vh;
+}
 /* - - - - - - - - - -
 ARCHIVES
 - - - - - - - - - - - */
