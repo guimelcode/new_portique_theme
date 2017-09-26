@@ -2,6 +2,8 @@
 /**
 * Template Name: Page avec image
 *
+* N'a jamais marché -> Marche en appel Template dans le BackOffice
+*
 * @package newportique
 */
 
