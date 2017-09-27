@@ -401,3 +401,11 @@ div.archives article section.thePostText{
 .archive-link h1.titre{
   text-transform: uppercase;
 }
+
+/* - - - - - - - - - -
+CONTACT PRESSE
+- - - - - - - - - - - */
+.contact-presse p{
+  font-size: 3em;
+  line-height: 1em;
+}
