@@ -67,17 +67,24 @@
     background-repeat: no-repeat;
 }
 .img-next-control{
-/*  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); */
+	/* background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4yNjggNy4xM0w2Ljk0NC4yNjlNLjI2OCA3LjEzbDYuNzI3IDYuOTE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIuNTI5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGYiLz48L3N2Zz4=); */
     right: 10px;
     left: auto;
 }
+
 .img-prev-control{
-/*  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); */
+/*	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+); */
     left: 10px;
     right: auto;
 }
 
+.swiper-button-prev{
+   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4yNjggNy4xM0w2Ljk0NC4yNjlNLjI2OCA3LjEzbDYuNzI3IDYuOTE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIuNTI5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGYiLz48L3N2Zz4=);
+}
 
+.swiper-button-next{
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+);
+}
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 NAVIGATION
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
@@ -448,6 +455,6 @@ Bootstrap 4 Media Queries
 @media(min-width:1200px){
   /* afficher la grille avec des intrelignages constants */
   div.archives article section.thePostText{
-    min-height: 40vh;
+    min-height: 35vh;
   }
 }
