@@ -347,7 +347,16 @@ APP
 /* - - - - - - - - - -
 ARTICLES
 - - - - - - - - - - - */
-.temps{
+h1.titre, h2.subtitle{
+  margin-bottom: 0.3em!important;
+}
+
+h2.subtitle{
+  font-family: 'portype-italic';
+}
+
+h3.temps{
+  margin-bottom: 1em!important;
   text-transform: uppercase;
 }
 
@@ -357,10 +366,12 @@ ARTICLES
   font-size: 5em;
   line-height: 0.85em;
 }
+
 .a-venir h2{
   font-size: 2.8em;
   line-height: 1em;
 }
+
 .a-venir h3.temps{
   text-transform: uppercase;
   font-size: 3em;
@@ -375,10 +386,7 @@ ARTICLES
   margin: 0;
 }
 
-.subtitle{
-  font-family: 'portype-italic';
-}
-
+/* conteneur d'images */
 .thePostImages{
   padding-bottom: 7vh;
 }
@@ -416,4 +424,30 @@ CONTACT PRESSE
 .equipe h2{
   font-size: 2.8em;
   line-height: 1em;
+}
+
+
+
+
+/* - - - - - - - - - -
+Bootstrap 4 Media Queries
+- - - - - - - - - - - */
+
+@media(min-width:576px){
+
+}
+
+@media(min-width:768px){
+
+}
+
+@media(min-width:992px){
+
+}
+
+@media(min-width:1200px){
+  /* afficher la grille avec des intrelignages constants */
+  div.archives article section.thePostText{
+    min-height: 40vh;
+  }
 }
