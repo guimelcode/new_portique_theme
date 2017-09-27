@@ -399,13 +399,21 @@ div.archives article section.thePostText{
   padding-bottom: 7vh;
 }
 .archive-link h1.titre{
-  text-transform: uppercase;
+
 }
 
 /* - - - - - - - - - -
 CONTACT PRESSE
 - - - - - - - - - - - */
 .contact-presse p{
-  font-size: 3em;
+  font-size: 2.8em;
+  line-height: 1em;
+}
+
+/* - - - - - - - - - -
+Équipe
+- - - - - - - - - - - */
+.equipe h2{
+  font-size: 2.8em;
   line-height: 1em;
 }
