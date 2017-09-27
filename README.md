@@ -52,3 +52,4 @@ Template custom pour l'intégration google maps dans infos / nous trouver
 ### Question à Mathias
 - qu'advient-il de "À venir lorsque ce cham est vide ?" désactiver "à venir du menu ?"
 faire au plus simple par rapport à l'architecture
+- verisons définitives des fontes portypes pour génération webfont

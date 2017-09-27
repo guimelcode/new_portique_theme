@@ -322,6 +322,15 @@ ul#mobile-footer{
   display: inline-flex;
 }
 
+
+#mobile-footer li.qtranxs-lang-menu-item.current-menu-item{
+  display: none;
+}
+
+#mobile-footer > .qtranxs-lang-menu-item > a{
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
 /* - - - - - - - - - -
 APP
 - - - - - - - - - - - */
