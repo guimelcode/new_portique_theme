@@ -8,6 +8,10 @@ yarn-error.log*
 # Ignore dist folder
 dist/
 
+dist/bundle.js
+
+dist/bundle.js.map
+
 # Runtime data
 pids
 *.pid
