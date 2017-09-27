@@ -365,14 +365,25 @@ ARTICLES
 .a-venir p{
 }
 
-.titre, .subtitle, .temps{
+:not(.article_mini) > header > h1.titre, :not(.article_mini) > header > h2.subtitle, :not(.article_mini) > header > h3.temps{
   font-size: 3em;
   line-height: 1.1em;
+  margin: 0;
+}
+
+.subtitle{
+  font-family: 'portype-italic';
 }
 
 .thePostImages{
   padding-bottom: 7vh;
 }
+
+/* légende */
+.swiper-slide > h2{
+  font-size: 1.7em;
+}
+
 /* - - - - - - - - - -
 ARCHIVES
 - - - - - - - - - - - */
