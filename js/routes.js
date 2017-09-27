@@ -6,7 +6,7 @@ import {sendPost} from './ajaxManager'
 import {Store} from './states'
 // import {changeRubrique} from './user-interface/menu';
 const baseUrl = '/portique_test_room/proj2';
-import {MenuInit} from './user-interface/menu';
+import {MenuInit, langUrlInject} from './user-interface/menu';
 import {userInterfaceStart} from './user-interface/user-interface';
 
 const SammyApp = Sammy(function () {
@@ -27,6 +27,8 @@ const SammyApp = Sammy(function () {
 
     console.log(postMessage);
     Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
+    Store.dispatch({type:'CHANGE_LANGUAGE', lang: this.params['lang']})
+    langUrlInject();
 
   });
   this.get('/:lang/:name/:id/', function() {
@@ -35,6 +37,8 @@ const SammyApp = Sammy(function () {
       'rubrique': this.params['id']
     }
     Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
+    Store.dispatch({type:'CHANGE_LANGUAGE', lang: this.params['lang']})
+    langUrlInject();
 
   });
   this.get('/:lang/:name/', function() {
@@ -43,6 +47,8 @@ const SammyApp = Sammy(function () {
       'rubrique': undefined
     }
     Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
+    Store.dispatch({type:'CHANGE_LANGUAGE', lang: this.params['lang']})
+    langUrlInject();
 
   });
   this.get('/:lang/', function() {
@@ -50,7 +56,16 @@ const SammyApp = Sammy(function () {
       'category': 'expositions',
       'rubrique': 'en-cours'
     }
-    Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
+    console.log('billy');
+
+    if(Store.getState().lang !== this.params['lang']){
+      Store.dispatch({type:'CHANGE_LANGUAGE', lang: this.params['lang']})
+      langUrlInject();
+    }else {
+      Store.dispatch({type:'CHANGE_RUB', rubrique: urlMessage})
+      langUrlInject();
+    }
+
 
 
 

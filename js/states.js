@@ -5,9 +5,13 @@ import {sendPost, archivePost} from './ajaxManager'
 import {Menu, changeRubrique} from './user-interface/menu'
 import {SwipperSystem, SliderChangeRubrique} from './user-interface/content-ui';
 
+let bl = window.location.pathname.replace(/^\/|\/$/g, '');
+let regEx = new RegExp("^[A-Za-z]{2}");
+
+console.log(regEx.exec(bl)[0]);
 
 const initStates = {
-  lang : 'fr',
+  lang : regEx.exec(bl)[0],
   title : 'Expositions',
   url: '/',
   category : 'expositions',
@@ -25,6 +29,22 @@ function AppStates(state=initStates, action){
     // console.log(state.lang);
     if(state.lang !== action.lang &&( action.lang === "fr"||action.lang === "en")){
       console.log('CHANGE_LANGUAGE Function');
+      if(!state.loaded){
+
+        //
+      }
+      // location.reload(true);
+      if(state.rubrique){
+        location.replace('http://debug.leportique.org/'+ action.lang +'/'+ state.category + '/' + state.rubrique);
+        location.reload(true)
+      }else{
+        location.replace('http://debug.leportique.org/'+ action.lang +'/'+ state.category );
+        location.reload(true)
+        
+
+      }
+// console.log(document.referrer);
+      //rubriqueCheck(Store.getState(), state.rubrique);
       return Object.assign({}, state, {
         lang: action.lang
       })
