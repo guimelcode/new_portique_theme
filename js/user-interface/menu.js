@@ -62,6 +62,29 @@ function langRedesign() {
   })
 }
 
+export function langUrlInject(newUrl){
+  let links = langMenu.find('a');
+  for (var i = 0; i < links.length; i++) {
+    // console.log(links[i])
+    if($(links[i]).attr('title') === 'Français'){
+      // console.log("Change lang Menu Link FR");
+      if(Store.getState().rubrique){
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/fr/' + Store.getState().category + '/' + Store.getState().rubrique )
+      }else{
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/fr/' + Store.getState().category )
+      }
+    }else{
+      // console.log("Change lang Menu Link EN");
+      if(Store.getState().rubrique){
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/en/' + Store.getState().category + '/' + Store.getState().rubrique )
+      }else{
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/en/' + Store.getState().category )
+      }
+
+    }
+  }
+}
+
 function modList(){
   if(topMenu.find('.active').find('.sub-menu>li').length <= 2){
     topMenu.find('.active').find('.sub-menu').addClass('push-top');

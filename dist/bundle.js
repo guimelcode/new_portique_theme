@@ -86,8 +86,13 @@ var _contentUi = __webpack_require__(11);
 $ = jQuery;
 
 
+var bl = window.location.pathname.replace(/^\/|\/$/g, '');
+var regEx = new RegExp("^[A-Za-z]{2}");
+
+console.log(regEx.exec(bl)[0]);
+
 var initStates = {
-  lang: 'fr',
+  lang: regEx.exec(bl)[0],
   title: 'Expositions',
   url: '/',
   category: 'expositions',
@@ -108,6 +113,20 @@ function AppStates() {
       // console.log(state.lang);
       if (state.lang !== action.lang && (action.lang === "fr" || action.lang === "en")) {
         console.log('CHANGE_LANGUAGE Function');
+        if (!state.loaded) {}
+
+        //
+
+        // location.reload(true);
+        if (state.rubrique) {
+          location.replace('http://debug.leportique.org/' + action.lang + '/' + state.category + '/' + state.rubrique);
+          location.reload(true);
+        } else {
+          location.replace('http://debug.leportique.org/' + action.lang + '/' + state.category);
+          location.reload(true);
+        }
+        // console.log(document.referrer);
+        //rubriqueCheck(Store.getState(), state.rubrique);
         return Object.assign({}, state, {
           lang: action.lang
         });
@@ -458,6 +477,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MenuInit = MenuInit;
 exports.Menu = Menu;
+exports.langUrlInject = langUrlInject;
 exports.changeRubrique = changeRubrique;
 exports.goRubriqueNav = goRubriqueNav;
 exports.goSectionNav = goSectionNav;
@@ -531,6 +551,28 @@ function langRedesign() {
   $('.qtranxs-lang-menu >a').css({
     'display': 'none'
   });
+}
+
+function langUrlInject(newUrl) {
+  var links = langMenu.find('a');
+  for (var i = 0; i < links.length; i++) {
+    // console.log(links[i])
+    if ($(links[i]).attr('title') === 'Français') {
+      // console.log("Change lang Menu Link FR");
+      if (_states.Store.getState().rubrique) {
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/fr/' + _states.Store.getState().category + '/' + _states.Store.getState().rubrique);
+      } else {
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/fr/' + _states.Store.getState().category);
+      }
+    } else {
+      // console.log("Change lang Menu Link EN");
+      if (_states.Store.getState().rubrique) {
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/en/' + _states.Store.getState().category + '/' + _states.Store.getState().rubrique);
+      } else {
+        $(links[i]).attr("href", 'http://' + window.location.hostname + '/en/' + _states.Store.getState().category);
+      }
+    }
+  }
 }
 
 function modList() {
@@ -7925,6 +7967,8 @@ var SammyApp = (0, _sammy2.default)(function () {
 
     };console.log(postMessage);
     _states.Store.dispatch({ type: 'CHANGE_RUB', rubrique: urlMessage });
+    _states.Store.dispatch({ type: 'CHANGE_LANGUAGE', lang: this.params['lang'] });
+    (0, _menu.langUrlInject)();
   });
   this.get('/:lang/:name/:id/', function () {
     var urlMessage = {
@@ -7932,6 +7976,8 @@ var SammyApp = (0, _sammy2.default)(function () {
       'rubrique': this.params['id']
     };
     _states.Store.dispatch({ type: 'CHANGE_RUB', rubrique: urlMessage });
+    _states.Store.dispatch({ type: 'CHANGE_LANGUAGE', lang: this.params['lang'] });
+    (0, _menu.langUrlInject)();
   });
   this.get('/:lang/:name/', function () {
     var urlMessage = {
@@ -7939,13 +7985,23 @@ var SammyApp = (0, _sammy2.default)(function () {
       'rubrique': undefined
     };
     _states.Store.dispatch({ type: 'CHANGE_RUB', rubrique: urlMessage });
+    _states.Store.dispatch({ type: 'CHANGE_LANGUAGE', lang: this.params['lang'] });
+    (0, _menu.langUrlInject)();
   });
   this.get('/:lang/', function () {
     var urlMessage = {
       'category': 'expositions',
       'rubrique': 'en-cours'
     };
-    _states.Store.dispatch({ type: 'CHANGE_RUB', rubrique: urlMessage });
+    console.log('billy');
+
+    if (_states.Store.getState().lang !== this.params['lang']) {
+      _states.Store.dispatch({ type: 'CHANGE_LANGUAGE', lang: this.params['lang'] });
+      (0, _menu.langUrlInject)();
+    } else {
+      _states.Store.dispatch({ type: 'CHANGE_RUB', rubrique: urlMessage });
+      (0, _menu.langUrlInject)();
+    }
   });
   this.notFound = function () {
     // do something
