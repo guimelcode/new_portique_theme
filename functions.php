@@ -90,6 +90,7 @@ function menu(){
 		$path = get_home_path();
 		//var_dump($path);
 		require_once($path.'wp-content/themes/new_portique_theme/types/exposition.php');
+		require_once($path.'wp-content/themes/new_portique_theme/types/evenement.php');
 
 	}
 
