@@ -340,6 +340,10 @@ APP
   height: 85vh;
 }
 
+#app > div > div.bxslider > div{
+  padding-top: 7vh;
+}
+
 /* - - - - - - - - - -
 ARTICLES
 - - - - - - - - - - - */
@@ -388,10 +392,12 @@ ARTICLES
 ARCHIVES
 - - - - - - - - - - - */
 .archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{
-  font-size: 2em;
-
+  margin: 0;
+  font-size: 2.8em;
 }
-
+div.archives article section.thePostText{
+  padding-bottom: 7vh;
+}
 .archive-link h1.titre{
   text-transform: uppercase;
 }
