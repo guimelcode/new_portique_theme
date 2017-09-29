@@ -22,36 +22,6 @@
   top: 0px;
 }
 
-
-
-/*.imgWrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    -ms-transition-property: -ms-transform;
-    transition-property: transform;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-}
-
-.img-swiper-slide {
-    -webkit-flex-shrink: 0;
-    -ms-flex: 0 0 auto;
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    position: relative;
-}*/
 .img-next-control, .img-prev-control{
   position: relative;
     top: 50%;
@@ -254,8 +224,8 @@ ul.sub-menu > li{
   padding-right: 11.53846154%;*/
 }
 .pre-mob li{
-  display: block !important;
-  width: 100%;
+/*  display: block !important;
+  width: 100%; */
 }
 
 .pre-mob .active .sub-menu li {
@@ -370,7 +340,7 @@ APP
 }
 
 #app > div > div.bxslider > div{
-  padding-top: 7vh;
+  padding-top: 20px;
 }
 
 /* - - - - - - - - - -
@@ -477,14 +447,45 @@ Bootstrap 4 Media Queries
     50% { opacity: 0; }
   }
 
-  #top-menu .active > a, .sub-menu .active a {
-    color: #00f;
+
+  #top-menu > .active > a{
     border-bottom: solid 1px #00f;
+/*    transition: 0.3s;
+    animation: blinker 1.7s linear infinite; */
+  }
+
+  /* Soulignement qui clignotte, à la même dimension du lien => Js ?
+  #top-menu > .active > a:before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 1px;
+  bottom: 0;
+  left: 0px;
+  border-bottom: 1px solid #00f;
+  transition: 0.4s;
+    animation: blinker 1.7s linear infinite;
+}
+*/
+
+
+  #top-menu > .active > a{
+    color: #00f !important;
+  }
+
+
+
+ .sub-menu > .active a {
+    color: #00f;
+    border-bottom: solid 1px transparent;
     transition: 0.3s;
     animation: blinker 1.7s linear infinite;
   }
 
-
+  .thePostText{
+    /* Pour compenser la présence du dégradé en bas de vue */
+    padding-bottom: 70px;
+  }
 }
 
 @media(min-width:1200px){
@@ -492,4 +493,9 @@ Bootstrap 4 Media Queries
   div.archives article section.thePostText{
     min-height: 35vh;
   }
+
+  .archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{
+    margin: 0!important;
+  }
+
 }

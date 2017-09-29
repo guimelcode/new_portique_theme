@@ -46,7 +46,7 @@
   </section>
 
   <?php if( have_rows('fichiers_media') ): ?>
-    <section class="thePostImages col-xs-offset-3 col-xs-20 col-sm-offset-10 col-sm-13 col-xs-24 col-sm-offset-3 col-sm-8 col-lg-offset-1 col-lg-13" data-spy="affix" data-offset-top="205">
+    <section class="thePostImages col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-md-20 col-md-20  col-lg-offset-1 col-lg-13" data-spy="affix" data-offset-top="205">
       <!-- <div class='img-slider-control'> -->
 
       <!-- </div> -->
