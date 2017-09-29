@@ -1,24 +1,9 @@
 
+
 /*------------------------------------*\
 SIGNATURE PORTIQUE
 \*------------------------------------*/
 
-#bottom-gradient{
-  z-index: 500;
-  bottom: 0px;
-  width:100%;
-  height: 75px;
-  position: fixed;
-  /* Bottom grandient */
-  background-image: -webkit-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);
-  background-image: -o-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);
-  background-image: -moz-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%);
-  background-image: linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%);
-  /* background: -webkit-linear-gradient(transparent, white, white); /* For Safari 5.1 to 6.0 */
-  /* background: -o-linear-gradient(transparent, white, white); /* For Opera 11.1 to 12.0 */
-  /* background: -moz-linear-gradient(transparent, white, white); /* For Firefox 3.6 to 15 */
-  /* background: linear-gradient(transparent, white, white); /* Standard syntax */
-}
 #signature-portique {
   font-size: 2.5em;
   visibility: hidden;
@@ -34,38 +19,21 @@ SIGNATURE PORTIQUE
 #signature-portique_LE{
   top: 0px;
   left: 0px;
-  /*Mobile / Have to add*/
-  /*width: 2em;*/
-  /*width: 80px;*/
-  /* width: 2.5em; */
 }
 
 #signature-portique_PORTIQUE{
   top: 0px;
   right: 0px;
-  /*Mobile / Have to add*/
-  /*width: 2em;*/
-  /*width: 210px;*/
-  /* width: 4.55em; */
 }
 
 #signature-portique_CENTRE-REGIONAL{
   bottom: 0px;
   right: -6px;
-  /*Mobile / Have to add*/
-  /*width: 2em;*/
-  /*width: 74px;*/
-  /* width: 2.5em; */
-
 }
 
 #signature-portique_D-ART-CONTEMPORAIN-DU-HAVRE{
   bottom: 0px;
   left: 0px;
-  /*Mobile / Have to add*/
-  /*width: 2em;*/
-  /*width: 520px;*/
-/*   width: 10em; */
 }
 
 /* signature margins */
@@ -112,6 +80,23 @@ SIGNATURE PORTIQUE
   #signature-portique {
     font-size: 1.75em;
     visibility: visible;
+ }
+
+ /*------------------------------------*\
+     BOTTOM GRADIENT
+ \*------------------------------------*/
+
+ #bottom-gradient{
+   z-index: 500;
+   bottom: 0px;
+   width:100%;
+   height: 85px;
+   position: fixed;
+   /* Bottom grandient */
+   background-image: -webkit-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);
+   background-image: -o-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);
+   background-image: -moz-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%);
+   background-image: linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%);
  }
 
 }

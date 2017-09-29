@@ -76,6 +76,7 @@ faire au plus simple par rapport à l'architecture
 - Agrandir la taille de la colonne de texte
 - Grille d'archives (version Laptop) : grille "fixe" avec hauteur fixe pour empêcher le chevauchement
 - Grille d'archives : réduire taille typo, tester avec un corps inféreieur
+- ajouter sur debug en bas de fenêtre le dégradé présent sur la version leportique.org, voir pour le rendre plus présent en hauteur
 
 
 ### Consignes et questions au portique

@@ -188,13 +188,14 @@ ul.sub-menu > li{
   transition: opacity .15s;
 }
 .sub-menu li a {
-  color: #8080ff;
-}
-
-.sub-menu .active a {
   color: #00f;
 }
-/*///*/
+
+
+#top-menu .active > a, .sub-menu .active a {
+  color: #00f;
+}
+
 
 
 /*Logo header*/
@@ -470,6 +471,19 @@ Bootstrap 4 Media Queries
 }
 
 @media(min-width:992px){
+  /* Animation blinker */
+
+  @keyframes blinker {
+    50% { opacity: 0; }
+  }
+
+  #top-menu .active > a, .sub-menu .active a {
+    color: #00f;
+    border-bottom: solid 1px #00f;
+    transition: 0.3s;
+    animation: blinker 1.7s linear infinite;
+  }
+
 
 }
 

@@ -1,7 +1,7 @@
 
 <?php echo '<article class="row"name="'.$post->post_name.'">' ?>
 
-  <section class="thePostText francais col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-lg-offset-1 col-lg-9">
+  <section class="thePostText francais col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-lg-offset-1 col-lg-10">
     <header >
       <h1 class="titre"><?php echo get_the_title(); ?></h1>
       <h2 class="subtitle"><?php echo get_field("sous-titre"); ?></h2>
@@ -46,7 +46,7 @@
   </section>
 
   <?php if( have_rows('fichiers_media') ): ?>
-    <section class="thePostImages col-xs-offset-3 col-xs-20 col-sm-offset-10 col-sm-13 col-xs-24 col-sm-offset-3 col-sm-8 col-lg-offset-2 col-lg-13" data-spy="affix" data-offset-top="205">
+    <section class="thePostImages col-xs-offset-3 col-xs-20 col-sm-offset-10 col-sm-13 col-xs-24 col-sm-offset-3 col-sm-8 col-lg-offset-1 col-lg-13" data-spy="affix" data-offset-top="205">
       <!-- <div class='img-slider-control'> -->
 
       <!-- </div> -->
