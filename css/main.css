@@ -85,6 +85,8 @@
 .swiper-button-next{
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+);
 }
+
+
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 NAVIGATION
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
@@ -103,9 +105,6 @@ NAVIGATION
   margin-top: 2em;
 }
 
-/* - - - - - - - - - - - - - -
-MENU
-- - - - - - - - - - - - - - */
 .menu-main-container {
   height: 15vw;
   border-bottom: solid 1px #00f;
@@ -113,8 +112,8 @@ MENU
 }
 
 .landscape .menu-main-container {
-  height: 15vh;
-  font-size: 1.6em;
+  height: 16vh;
+  /* font-size: 1.6em; */
   border-bottom: solid 1px #00f;
   padding-bottom: 10px;
 }
@@ -128,6 +127,9 @@ MENU
 .menu-main-container li {
   list-style: none;
 }
+/* - - - - - - - - - - - - - -
+        MENU
+ - - - - - - - - - - - - - - */
 
 .menu {
   z-index: 2000;
@@ -137,24 +139,17 @@ MENU
   transition: 1s;
 }
 
-/* Blinker Animation - Menu */
-@keyframes blinker {
-  50% { opacity: 0; }
-}
-
-ul.sub-menu > li.active > a{
-  color: #00f;
-  transition: 0.3s;
-  animation: blinker 1.7s linear infinite;
-}
 
 #top-menu {
   transition-property: opacity;
   transition-duration: .45s;
 }
-
 #top-menu > li {
   display: none;
+}
+
+#top-menu li a {
+    z-index: 3000!important;
 }
 
 #top-menu .active  {
@@ -175,8 +170,12 @@ ul.sub-menu > li.active > a{
   list-style: none;
   visibility: hidden;
   z-index: 1;
-  font-size: 0.65em;
+  /* font-size: 0.8em; */
   /* display: none; */
+}
+
+ul.sub-menu > li{
+  font-size: 0.6em;
 }
 
 .active .sub-menu li {
@@ -184,16 +183,10 @@ ul.sub-menu > li.active > a{
   opacity: 1;
 }
 
-.pre-mob .active .sub-menu li {
-  visibility: hidden;
-  opacity: 0;
-}
-
 .sub-menu li {
   opacity: 0;
   transition: opacity .15s;
 }
-
 .sub-menu li a {
   color: #8080ff;
 }
@@ -202,6 +195,7 @@ ul.sub-menu > li.active > a{
   color: #00f;
 }
 /*///*/
+
 
 /*Logo header*/
 #signature-portique_LP {
@@ -214,12 +208,12 @@ ul.sub-menu > li.active > a{
 }
 
 .landscape #signature-portique_LP {
-  width: 80%;
+  width: 50%;
   padding: 5%;
+
   /*margin: 0 auto;
   display: block;*/
 }
-
 .logo-mobile {
   float: right;
   position: absolute;
@@ -227,9 +221,7 @@ ul.sub-menu > li.active > a{
   top: 0.4em;
   right: 0;
   z-index: 2000;
-  width: 80px;
 }
-
 .lp-home {
   display: block;
   margin: 0 auto;
@@ -253,21 +245,41 @@ ul.sub-menu > li.active > a{
   50% {    transform: rotate(5deg);}
   75% {    transform: rotate(-5deg);}
   100% {    transform: rotate(0deg);}
+
 }
 
 .pre-mob {
   /*width: 84.61538462%;
   padding-right: 11.53846154%;*/
 }
-
 .pre-mob li{
   display: block !important;
-  width: 50%;
+  width: 100%;
+}
+
+.pre-mob .active .sub-menu li {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .push-top {
   top: 1em;
 }
+
+/*Partie sociale*/
+.social-item {
+  display: block !important;
+  position: relative;
+}
+.social-item a {
+  position: relative;
+  font-size: 1.4em;
+}
+.social-item a i {
+  width: 100%;
+  text-align: center;
+}
+
 
 /* - - - - - - - - - -
 SOCIAL MEDIA ICONS

@@ -1,0 +1,253 @@
+@import url('../node_modules/bootstrap/dist/css/bootstrap.css');
+
+@import url('./font.css');
+@import url('./global-html.css');
+@import url('./signature.css');
+
+.imgGal img{
+  display: block;
+  /*width: 300px;*/
+  width: 100%;
+  /*height: 46vh;*/
+}
+
+/*.imgWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.img-swiper-slide {
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}*/
+.img-next-control, .img-prev-control{
+  position: relative;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    -moz-background-size: 27px 44px;
+    -webkit-background-size: 27px 44px;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.img-next-control{
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+
+    right: 10px;
+    left: auto;
+}
+.img-prev-control{
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+
+    left: 10px;
+    right: auto;
+}
+
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+NAVIGATION
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+.navigation-top {
+  margin-top: 3em;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  font-size: 0.8em;
+}
+
+.landscape .navigation-top {
+  margin-top: 2em;
+}
+
+.menu-main-container {
+  height: 15vw;
+  border-bottom: solid 1px #00f;
+  padding-bottom: 18px;
+}
+
+.landscape .menu-main-container {
+  height: 16vh;
+  /* font-size: 1.6em; */
+  border-bottom: solid 1px #00f;
+  padding-bottom: 10px;
+}
+
+.menu-main-container a {
+  text-decoration: none;
+  color: #00f;
+  /*color: #8080ff;*/
+}
+
+.menu-main-container li {
+  list-style: none;
+}
+/* - - - - - - - - - - - - - -
+        MENU
+ - - - - - - - - - - - - - - */
+
+.menu {
+  z-index: 2000;
+  padding-top: 8px;
+  list-style: none;
+  background: #fff;
+  transition: 1s;
+}
+
+
+#top-menu {
+  transition-property: opacity;
+  transition-duration: .45s;
+}
+#top-menu > li {
+  display: none;
+}
+
+#top-menu .active  {
+  display: block;
+}
+
+.hide-lp {
+  opacity: 0;
+}
+
+.sub-menu {
+  padding-top: 10px;
+  position: absolute;
+  top : 0;
+  margin: 1.2em 0 -6px;
+  padding: 0 12px 0 0;
+  width : 76.92307692vw;
+  list-style: none;
+  visibility: hidden;
+  z-index: 1;
+  /* font-size: 0.8em; */
+  /* display: none; */
+}
+
+.active .sub-menu li {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pre-mob .active .sub-menu li {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sub-menu li {
+  opacity: 0;
+  transition: opacity .15s;
+}
+.sub-menu li a {
+  color: #8080ff;
+}
+
+.sub-menu .active a {
+  color: #00f;
+}
+/*///*/
+
+
+/*Logo header*/
+#signature-portique_LP {
+  width: 90%;
+  position: relative;
+  display: block;
+
+  margin: 0 auto;
+  transition: width .2s, padding .1s;
+}
+
+.landscape #signature-portique_LP {
+  width: 50%;
+  padding: 5%;
+
+  /*margin: 0 auto;
+  display: block;*/
+}
+.logo-mobile {
+  float: right;
+  position: absolute;
+  margin-right: 1em;
+  top: 0.4em;
+  right: 0;
+  z-index: 2000;
+}
+.lp-home {
+  display: block;
+  margin: 0 auto;
+  transform: rotate(0deg);
+  transition: transform .8s;
+}
+
+.lp-move {
+  animation: lpmove .65s;
+  animation-iteration-count: 2;
+}
+
+.lp-active {
+  transition: transform .8s;
+  transform: rotate(-38deg);
+}
+
+@keyframes lpmove {
+  0% {    transform: rotate(0deg);}
+  25% {    transform: rotate(-5deg);}
+  50% {    transform: rotate(5deg);}
+  75% {    transform: rotate(-5deg);}
+  100% {    transform: rotate(0deg);}
+
+}
+
+.pre-mob {
+  /*width: 84.61538462%;
+  padding-right: 11.53846154%;*/
+}
+.pre-mob li{
+  display: block !important;
+  width: 50%;
+}
+
+.push-top {
+  top: 1em;
+}
+
+/*Partie sociale*/
+.social-item {
+  display: block !important;
+  position: relative;
+}
+.social-item a {
+  position: relative;
+  font-size: 1.4em;
+}
+.social-item a i {
+  width: 100%;
+  text-align: center;
+}
