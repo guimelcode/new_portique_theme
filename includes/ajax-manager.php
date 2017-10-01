@@ -81,15 +81,8 @@ function mediations(){
 	</div>
 	</div>";
 	echo "<div class='bxslider swiper-wrapper'>";
-	echo "<div class='jeunes-publics swiper-slide'>";
-	echo "<div class='col-sm-12 col-sm-offset-1'>";
-	echo "<h2>";
-	echo "</h2><p>";
-	$content = apply_filters('the_content', $jeunespublics->post_content);
-	echo $content;
-	echo "</p></div><div class='col-lg-11 col-lg-offset-1'>";
-	// echo '<img class="image-mediations" src="http://amaguq.net/portique-prod-2/wp-content/uploads/2017/05/IMG_1096_resized.jpg"/>';
-	echo "</div></div>";
+	get_template_part( 'template-parts/pages/page' );
+
 
 
 	echo "<div class='scolaires swiper-slide'>";
