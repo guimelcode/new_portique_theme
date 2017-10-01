@@ -33,7 +33,7 @@ function archives_get_post($args) {
 		$gros_query = new WP_Query($args);
 		if ( $gros_query->have_posts() ) : while ( $gros_query->have_posts() ) : $gros_query->the_post();
 		echo "<div class='archives-article'>";
-	 get_template_part( 'template-parts/article' );
+	 get_template_part( 'template-parts/expositions/article' );
 	 $counter++;
 	//  echo $counter;
 	 echo "</div >";

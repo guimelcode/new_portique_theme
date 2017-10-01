@@ -24,7 +24,7 @@ function expositions(){
 
   if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
   echo "<div class='a-venir swiper-slide'>";
-  get_template_part( 'template-parts/article_mini' );
+  get_template_part( 'template-parts/expositions/article_mini' );
   $counter++;
   echo "</div >";
 endwhile;
@@ -37,7 +37,7 @@ $ajax_query = new WP_Query($args);
 
 if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
 echo "<div class='en-cours swiper-slide'>";
-get_template_part( 'template-parts/article' );
+get_template_part( 'template-parts/expositions/article' );
 
 $counter++;
 
@@ -54,7 +54,7 @@ echo "<div class='archives swiper-slide'>
 <div class='archives-hover'><span class='close-tag'></span><div class='content'></div></div><article class='row col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-23 col-lg-offset-1 col-lg-25'>";
 if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
 
-get_template_part( 'template-parts/cell' );
+get_template_part( 'template-parts/expositions/cell' );
 $counter++;
 // var_dump(get_the_title()) ;
 
