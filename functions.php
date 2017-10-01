@@ -110,7 +110,6 @@ function menu(){
 		return $date;
 
 	}
-
 	add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_scripts' );
 	function my_theme_enqueue_scripts() {
 

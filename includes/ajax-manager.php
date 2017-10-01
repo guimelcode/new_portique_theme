@@ -86,20 +86,14 @@ function mediations(){
 	$post = $jeunespublics;
 	$content = apply_filters('the_content', $post->post_content);
 	// get_template_part( 'template-parts/pages/page' );
-	include(get_template_directory(). '/template-parts/pages/page.php');
+	// echo "<h2>". $post ."</h2>";
+	// print_r($post);
+	include(get_template_directory(). '/template-parts/pages/page-image.php');
 
-
-
-	echo "<div class='scolaires swiper-slide'>";
-	echo "<div class='col-sm-12 col-sm-offset-1'>";
-	echo "<h2>";
-	echo "</h2><p>";
-	$content = apply_filters('the_content', $scolaires->post_content);
-	echo $content;
-	echo "</p></div><div class='col-lg-11 col-lg-offset-1'>";
-	// echo '<img class="image-mediations" src="http://amaguq.net/portique-prod-2/wp-content/uploads/2017/05/IMG_1125_resized.jpg"/>';
-	echo "</div></div>";
-
+	$post = $scolaires;
+	$content = apply_filters('the_content', $post->post_content);
+	// get_template_part( 'template-parts/pages/page' );
+	include(get_template_directory(). '/template-parts/pages/page-image.php');
 
 	die();
 }
