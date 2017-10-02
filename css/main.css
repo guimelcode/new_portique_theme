@@ -66,8 +66,7 @@ NAVIGATION
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 .navigation-top {
-  margin-top: 3em;
-  margin-bottom: 15px;
+  margin: 0px;
   display: block;
   width: 100%;
   height: auto;
@@ -75,11 +74,18 @@ NAVIGATION
   font-size: 0.8em;
 }
 
+ #site-navigation{
+   z-index: 50000;
+   background: #fff;
+ }
+
+
 .landscape .navigation-top {
   margin-top: 2em;
 }
 
 .menu-main-container {
+  background: #fff;
   height: 15vw;
   border-bottom: solid 1px #00f;
   padding-bottom: 18px;
@@ -309,16 +315,6 @@ ul#mobile-footer{
   display: inline-flex;
 }
 
-
-#mobile-footer li.qtranxs-lang-menu-item.current-menu-item{
-  display: none;
-}
-
-#mobile-footer > .qtranxs-lang-menu-item > a{
-  text-transform: uppercase;
-  font-size: 0.7em;
-}
-
 /* - - - - - - - - - -
 APP
 - - - - - - - - - - - */
@@ -424,9 +420,10 @@ div.archives article{
 div.archives-hover > article, div.archives-hover > article > section.thePostText{
   padding-left: 0px;
 }
-
-.archive-link h1.titre{
-
+  div#expositions div.bxslider.swiper-wrapper div.archives.swiper-slide.swiper-slide-active article{
+  background-color: #fff;
+  padding-top: 10vh;
+  padding-bottom: 15vh;
 }
 
 /*------------------------------------*\
@@ -547,6 +544,11 @@ Bootstrap 4 Media Queries
 
   .archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{
     margin: 0!important;
+  }
+
+  .imgGal{
+    position: fixed;
+    width: 50%;
   }
 
 }

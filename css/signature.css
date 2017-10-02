@@ -11,7 +11,7 @@ SIGNATURE PORTIQUE
 
 #signature-portique > img{
   position: fixed;
-  z-index: 3000;
+  z-index: 60000;
   padding: 15px;
   pointer-events: none;
 }
