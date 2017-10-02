@@ -50,8 +50,12 @@ $args = date_test()[2];
 
 $ajax_query = new WP_Query($args);
 
-echo "<div class='archives swiper-slide'>
-<div class='archives-hover'><span class='close-tag'></span><div class='content'></div></div><article class='row col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-23 col-lg-offset-1 col-lg-25'>";
+
+echo "<div class='archives swiper-slide'>";
+echo "<div class='archives-hover'><span class='close-tag'></span><div class='content'></div></div>";
+echo"<article class='row col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-23 col-lg-offset-1 col-lg-25'>";
+echo "<div id='middle-gradient' class='archives'></div>";
+
 if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
 
 get_template_part( 'template-parts/expositions/cell' );
