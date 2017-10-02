@@ -4,6 +4,10 @@
 @import url('./global-html.css');
 @import url('./signature.css');
 
+/*.archives-hover{
+  display: none;
+}*/
+
 .imgGal{
   overflow: hidden;
 }
