@@ -177,7 +177,6 @@ ul.sub-menu > li{
 }
 
 
-
 /*Logo header*/
 #signature-portique_LP {
   width: 90%;
@@ -422,8 +421,12 @@ div.archives-hover > article, div.archives-hover > article > section.thePostText
 }
   div#expositions div.bxslider.swiper-wrapper div.archives.swiper-slide.swiper-slide-active article{
   background-color: #fff;
-  padding-top: 10vh;
+  padding-top: 0px;
   padding-bottom: 15vh;
+}
+
+.archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{
+  margin: 0!important;
 }
 
 /*------------------------------------*\
@@ -540,10 +543,7 @@ Bootstrap 4 Media Queries
   /* afficher la grille avec des intrelignages constants */
   div.archives article section.thePostText{
     min-height: 35vh;
-  }
-
-  .archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{
-    margin: 0!important;
+    padding-bottom: 15vh;
   }
 
   .imgGal{
