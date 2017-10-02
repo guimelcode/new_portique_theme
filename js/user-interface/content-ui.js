@@ -120,7 +120,7 @@ export function Archives() {
   let category = Store.getState().category;
   let rub = 'archives';
   let archivesHover = $('.archives-hover');
-  archivesHover.hide();
+  // archivesHover.hide();
   archivesLink.click(function (e) {
     e.preventDefault();
     let postID = $(this).attr("postID");
