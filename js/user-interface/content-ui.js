@@ -53,7 +53,7 @@ function GallerySlider(){
     // 'wrapperClass' : 'imgWrap',
     // 'slideClass': 'img-swiper-slide',
     // 'slidesPerView': 1,
-     'nested': true,
+    'nested': true,
     // 'touchEventsTarget' : 'wrapper',
     // 'width' : '100%',
     // // 'simulateTouch':false,
@@ -119,16 +119,64 @@ export function Archives() {
   let lang = Store.getState().lang;
   let category = Store.getState().category;
   let rub = 'archives';
-
+  let archivesHover = $('.archives-hover');
+  archivesHover.hide();
   archivesLink.click(function (e) {
     e.preventDefault();
     let postID = $(this).attr("postID");
     let postName =  $(this).attr("name");
+    let prevStateSinglePost = false;
     archivePost(postID, null, function(){
+      // console.log(Store.getState().isSinglePost);
+      prevStateSinglePost = Store.getState().isSinglePost;
       Store.dispatch({type:'CHANGE_SINLEGPOST', isSinglePost: true})
       Store.dispatch({type:'CHANGE_POSTNAME', postName:  postName})
       history.pushState(baseUrl+'/'+lang+'/'+category+'/'+rub+'/', baseUrl+'/'+lang+'/'+category+'/'+rub+'/', baseUrl+'/'+lang+'/'+category+'/'+rub+'/'+postName);
     })
+    let archivesArticle = $('.archives').children().eq(1);
+
+    console.log(archivesArticle);
+    // archivesArticle.slideDown();
+    //  archivesArticle.slideUp();
+
+    // if (!prevStateSinglePost) {
+    //   console.log('SCROLL Fuchk !!!!');
+    //
+    //   archivesHover.slideDown();
+    // }else {
+    //   //  $('.archives').animate({
+    //   //       scrollTop: 0
+    //   //   }, 700);
+    //   console.log('SCROLL !!!!');
+    //   console.log(archivesHover.find('.thePostText').height());
+    //
+    //   $('.archives').animate({
+    //     // scrollTop :$('.archives').scrollTop()-50
+    //     scrollTop :archivesHover.find('.thePostText').height()
+    //   },{
+    //     duration :  800
+    //   }).promise().done(function(){
+    //     setTimeout(function(){
+    //       console.log('Scrolltop complete');
+    //       archivesHover.slideUp(1200, 'linear', function(){
+    //         setTimeout(function(){
+    //           archivesHover.slideDown();
+    //         }, 1100)
+    //
+    //       });
+    //     }, 2000)
+    //
+    //   })
+    //   // setTimeout(function(){
+    //   //   $('.archives').animate({
+    //   //         scrollTop: 0
+    //   //     }, 700, 'linear', function(){
+    //   //       archivesHover.slideDown();
+    //   //
+    //   //     });
+    //   // }, 1100)
+    // }
+
 
   })
 }

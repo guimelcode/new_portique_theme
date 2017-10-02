@@ -56,9 +56,53 @@ export function archivePost(postID, postTitle, cb) {
     success : function( data ) {
       // console.log(data);
       // console.log($( '.archives-hover' ).find('.content'));
-      $( '.archives-hover' ).find('.content').empty().html(data);
 
-      $( '.archives-hover' ).toggleClass('visu');
+
+      // $( '.archives-hover' ).toggleClass('visu');
+
+      ///
+      let prevStateSinglePost = Store.getState().isSinglePost;
+      let archivesHover = $('.archives-hover');
+      let archivesArticle = $('.archives').children().eq(1);
+      console.log(prevStateSinglePost);
+      if (!prevStateSinglePost) {
+        console.log('SCROLL Fuchk !!!!');
+          $( '.archives-hover' ).find('.content').empty().html(data);
+        archivesHover.slideDown();
+      }else {
+        // console.log('SCROLL !!!!');
+        // console.log(archivesHover.find('.thePostText').height());
+        //
+        // $('.archives').animate({
+        //   // scrollTop :$('.archives').scrollTop()-50
+        //   scrollTop :archivesHover.find('.thePostText').height()
+        // },{
+        //   duration :  850
+        // }).promise().done(function(){
+        //   setTimeout(function(){
+        //       $( '.archives-hover' ).find('.content').empty().html(data);
+        //     console.log('Scrolltop complete');
+        //     archivesHover.slideUp(800, 'linear', function(){
+        //       setTimeout(function(){
+        //         archivesHover.slideDown(1000);
+        //       }, 800)
+        //
+        //     });
+        //   }, 1000)
+        //
+        // })
+        console.log('SCROLL !!!!');
+        // $('.archives').animate({
+        //   scrollTop : archivesHover.find('.thePostText').height()
+        // }, 800).promise().done(function(){
+          archivesHover.slideUp(1200, 'linear', function(){
+            $( '.archives-hover' ).find('.content').empty().html(data).promise().done(function(){
+              archivesHover.slideDown(1000);
+            })
+          })
+        // })
+
+      }
 
     },
     error : function( data ) {
