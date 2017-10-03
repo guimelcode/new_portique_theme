@@ -141,15 +141,15 @@ function informations(){
 	// echo '<img class="image-informations" src="http://amaguq.net/portique-prod-2/wp-content/uploads/2017/05/IMG_1125_resized.jpg"/>';
 	echo "</div></div>";
 
-	echo "<div class='nous-trouver swiper-slide'>";
-	echo "<div class='col-sm-12 col-sm-offset-1'>";
-	echo "<h2>";
-	echo "</h2><p>";
+	$post = $nousTrouver;
 	$content = apply_filters('the_content', $nousTrouver->post_content);
-	echo $content;
+	/* adding tepmlate path - test*/
+	include(get_template_directory(). '/template-parts/pages/page-map.php');
+
+/*	echo $content;
 	echo "</p></div><div class='col-lg-11 col-lg-offset-1'>";
 	// echo '<img class="image-informations" src="http://amaguq.net/portique-prod-2/wp-content/uploads/2017/05/IMG_1125_resized.jpg"/>';
-	echo "</div></div>";
+	echo "</div></div>"; */
 
 
 	die();

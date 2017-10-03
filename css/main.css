@@ -4,9 +4,31 @@
 @import url('./global-html.css');
 @import url('./signature.css');
 
+/*ARCHIVE*/
+
 /*.archives-hover{
   display: none;
 }*/
+
+.archives-hover {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity .5s;
+}
+.a-hover-open {
+  visibility: visible;
+  opacity: 1;
+  /*transition: visibility 1s, opacity 1s;*/
+
+}
+
+.archives>article {
+  position: absolute;
+  top: 20px;
+  /*padding-top: 20px;*/
+  z-index: 1000;
+  transition: top 1.2s;
+}
 
 .imgGal{
   overflow: hidden;

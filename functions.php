@@ -115,8 +115,22 @@ function menu(){
 
 		wp_enqueue_script( 'bundle', get_stylesheet_directory_uri() . '/dist/bundle.js', array('jquery'), 1, false );
 		wp_localize_script( 'bundle', 'adminAjax', admin_url( 'admin-ajax.php' ) );
-
 	}
 
 	require_once( __DIR__ . '/includes/ajax-manager.php');
 	require_once( __DIR__ . '/includes/navigation.php');
+
+	/* Google map API */
+
+
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+function my_theme_add_scripts() {
+    if (is_page('nous-trouver')) {
+        wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key="XXXX', array(), '3', true );
+        wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/google-maps.js', array('google-map', 'jquery'), '0.1', true );
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'my_theme_add_scripts' );
