@@ -88,34 +88,28 @@ NAVIGATION
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 .navigation-top {
-  margin: 0px;
+  margin-top: 3em;
+  margin-bottom: 15px;
   display: block;
   width: 100%;
   height: auto;
   position: relative;
-  font-size: 0.8em;
 }
-
- #site-navigation{
-   z-index: 50000;
-   background: #fff;
- }
-
 
 .landscape .navigation-top {
   margin-top: 2em;
 }
 
 .menu-main-container {
-  background: #fff;
   height: 15vw;
+  font-size: 1.8em;
   border-bottom: solid 1px #00f;
   padding-bottom: 18px;
 }
 
 .landscape .menu-main-container {
   height: 16vh;
-  /* font-size: 1.6em; */
+  font-size: 1.6em;
   border-bottom: solid 1px #00f;
   padding-bottom: 10px;
 }
@@ -129,9 +123,6 @@ NAVIGATION
 .menu-main-container li {
   list-style: none;
 }
-/* - - - - - - - - - - - - - -
-        MENU
- - - - - - - - - - - - - - - */
 
 .menu {
   z-index: 2000;
@@ -141,17 +132,13 @@ NAVIGATION
   transition: 1s;
 }
 
-
 #top-menu {
   transition-property: opacity;
   transition-duration: .45s;
 }
 #top-menu > li {
   display: none;
-}
-
-#top-menu li a {
-    z-index: 3000!important;
+  font-size: 0.8em;
 }
 
 #top-menu .active  {
@@ -162,22 +149,19 @@ NAVIGATION
   opacity: 0;
 }
 
+/*///*/
+
 .sub-menu {
   padding-top: 10px;
-  position: absolute;
+  position: relative;
   top : 0;
-  margin: 1.2em 0 -6px;
+  margin: 0 -6px;
   padding: 0 12px 0 0;
   width : 76.92307692vw;
   list-style: none;
   visibility: hidden;
   z-index: 1;
-  /* font-size: 0.8em; */
   /* display: none; */
-}
-
-ul.sub-menu > li{
-  font-size: 0.6em;
 }
 
 .active .sub-menu li {
@@ -185,18 +169,24 @@ ul.sub-menu > li{
   opacity: 1;
 }
 
+.pre-mob .active .sub-menu li {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .sub-menu li {
   opacity: 0;
   transition: opacity .15s;
+  font-size: 0.6em;
 }
 .sub-menu li a {
-  color: #00f;
+  color: #8080ff;
 }
 
-
-#top-menu .active > a, .sub-menu .active a {
+.sub-menu .active a {
   color: #00f;
 }
+/*///*/
 
 
 /*Logo header*/
@@ -255,13 +245,8 @@ ul.sub-menu > li{
   padding-right: 11.53846154%;*/
 }
 .pre-mob li{
-/*  display: block !important;
-  width: 100%; */
-}
-
-.pre-mob .active .sub-menu li {
-  visibility: hidden;
-  opacity: 0;
+  display: block !important;
+  width: 50%;
 }
 
 .push-top {
@@ -277,25 +262,6 @@ ul.sub-menu > li{
   position: relative;
   font-size: 1.4em;
 }
-.social-item a i {
-  width: 100%;
-  text-align: center;
-}
-
-
-/* - - - - - - - - - -
-SOCIAL MEDIA ICONS
-- - - - - - - - - - - */
-.social-item {
-  display: block !important;
-  position: relative;
-}
-
-.social-item a {
-  position: relative;
-  font-size: 0.2em;
-}
-
 .social-item a i {
   width: 100%;
   text-align: center;
