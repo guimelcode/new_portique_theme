@@ -66,10 +66,45 @@ export function archivePost(postID, postTitle, cb) {
       let archivesArticle = $('.archives').children().eq(1);
       console.log(prevStateSinglePost);
       if (!prevStateSinglePost) {
-        console.log('SCROLL Fuchk !!!!');
-          $( '.archives-hover' ).find('.content').empty().html(data);
-        archivesHover.slideDown();
+        // console.log('SCROLL Fuchk !!!!');
+        //   $( '.archives-hover' ).find('.content').empty().html(data);
+        // archivesHover.slideDown();
       }else {
+        let defaultPaddingTop = 20;
+        let defaultPaddingBottom = 100;
+
+        $('.archives').animate({
+          scrollTop: 0
+        }, 700).promise().done(function () {
+          archivesArticle.css({
+            'top' : defaultPaddingTop
+          });
+          archivesHover.removeClass('a-hover-open');
+          setTimeout(function () {
+            archivesHover.find('.content').empty().html(data).promise().done(function(){
+              archivesHover.addClass('a-hover-open');
+              setTimeout(function () {
+
+                let TextHeight = archivesHover.find('.thePostText').height();
+                let GalHeight = archivesHover.find('.thePostImages').height();
+                //  let GalHeight = archivesHover.find('.thePostImages').clientHeight;
+                console.log(GalHeight);
+                console.log(defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom);
+                console.log(archivesHover.find('.thePostImages').clientHeight);
+
+                archivesArticle.css({
+                  'top' : defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom
+                })
+
+              }, 750);
+
+
+            });
+          },900)
+
+        })
+
+
         // console.log('SCROLL !!!!');
         // console.log(archivesHover.find('.thePostText').height());
         //
@@ -95,11 +130,11 @@ export function archivePost(postID, postTitle, cb) {
         // $('.archives').animate({
         //   scrollTop : archivesHover.find('.thePostText').height()
         // }, 800).promise().done(function(){
-          archivesHover.slideUp(1200, 'linear', function(){
-            $( '.archives-hover' ).find('.content').empty().html(data).promise().done(function(){
-              archivesHover.slideDown(1000);
-            })
-          })
+        // archivesHover.slideUp(1200, 'linear', function(){
+        //   $( '.archives-hover' ).find('.content').empty().html(data).promise().done(function(){
+        //     archivesHover.slideDown(1000);
+        //   })
+        // })
         // })
 
       }
