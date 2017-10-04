@@ -102,3 +102,81 @@ NAVIGATION
   color: #00f;
 }
 /*///*/
+
+/*Logo header*/
+#signature-portique_LP {
+  width: 90%;
+  position: relative;
+  display: block;
+
+  margin: 0 auto;
+  transition: width .2s, padding .1s;
+}
+
+.landscape #signature-portique_LP {
+  width: 50%;
+  padding: 5%;
+
+  /*margin: 0 auto;
+  display: block;*/
+}
+.logo-mobile {
+  float: right;
+  position: absolute;
+  margin-right: 1em;
+  top: 0.4em;
+  right: 0;
+  z-index: 2000;
+}
+.lp-home {
+  display: block;
+  margin: 0 auto;
+  transform: rotate(0deg);
+  transition: transform .8s;
+}
+
+.lp-move {
+  animation: lpmove .65s;
+  animation-iteration-count: 2;
+}
+
+.lp-active {
+  transition: transform .8s;
+  transform: rotate(-38deg);
+}
+
+@keyframes lpmove {
+  0% {    transform: rotate(0deg);}
+  25% {    transform: rotate(-5deg);}
+  50% {    transform: rotate(5deg);}
+  75% {    transform: rotate(-5deg);}
+  100% {    transform: rotate(0deg);}
+
+}
+
+.pre-mob {
+  /*width: 84.61538462%;
+  padding-right: 11.53846154%;*/
+}
+.pre-mob li{
+  display: block !important;
+  width: 50%;
+}
+
+.push-top {
+  top: 0;
+}
+
+/*Partie sociale*/
+.social-item {
+  display: block !important;
+  position: relative;
+}
+.social-item a {
+  position: relative;
+  font-size: 1.4em;
+}
+.social-item a i {
+  width: 100%;
+  text-align: center;
+}
