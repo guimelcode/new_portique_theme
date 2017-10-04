@@ -1,0 +1,104 @@
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+NAVIGATION
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+.navigation-top {
+  margin-top: 3em;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.landscape .navigation-top {
+  margin-top: 2em;
+}
+
+.menu-main-container {
+  height: 15vw;
+  font-size: 1.8em;
+  border-bottom: solid 1px #00f;
+  padding-bottom: 18px;
+}
+
+.landscape .menu-main-container {
+  height: 16vh;
+  font-size: 1.6em;
+  border-bottom: solid 1px #00f;
+  padding-bottom: 10px;
+}
+
+.menu-main-container a {
+  text-decoration: none;
+  color: #00f;
+  /*color: #8080ff;*/
+}
+
+.menu-main-container li {
+  list-style: none;
+}
+
+.menu {
+  z-index: 2000;
+  padding-top: 8px;
+  list-style: none;
+  background: #fff;
+  transition: 1s;
+}
+
+#top-menu {
+  transition-property: opacity;
+  transition-duration: .45s;
+}
+#top-menu > li {
+  display: none;
+  font-size: 0.8em;
+}
+
+#top-menu .active  {
+  display: block;
+}
+
+.hide-lp {
+  opacity: 0;
+}
+
+/*///*/
+
+.sub-menu {
+  padding-top: 10px;
+  position: relative;
+  top : 0;
+  margin: 0 -6px;
+  padding: 0 12px 0 0;
+  width : 76.92307692vw;
+  list-style: none;
+  visibility: hidden;
+  z-index: 1;
+  /* display: none; */
+}
+
+.active .sub-menu li {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pre-mob .active .sub-menu li {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sub-menu li {
+  opacity: 0;
+  transition: opacity .15s;
+  font-size: 0.6em;
+}
+.sub-menu li a {
+  color: #8080ff;
+}
+
+.sub-menu .active a {
+  color: #00f;
+}
+/*///*/
