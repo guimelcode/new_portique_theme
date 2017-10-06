@@ -1,3 +1,3 @@
-console.log('Coucou bande de putes');
+console.log('script working');
 $ = jQuery;
 console.log($);
