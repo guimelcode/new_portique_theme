@@ -43,17 +43,29 @@ export function Menu(isMobile) {
       // presentationNav();
       localStorage.setItem("introPlay", "yes");
     }
+    categoryLink.click(function(e){
+      //  e.preventDefault();
+      console.log('categoryLink');
+      //goSectionNav()
+      //if(lpHome.hasClass('lp-active')){ lpHome.removeClass('lp-active'); }
+      logoComportement();
+    })
+  }else{
+    topMenu.find('.active').find('.sub-menu').removeClass('push-top');
+    alignSubmenu();
   }
   //categoryLink = $('#top-menu>li>a');
   //  console.log(categoryLink);
-  categoryLink.click(function(e){
-    //  e.preventDefault();
-    console.log('categoryLink');
-    //goSectionNav()
-    //if(lpHome.hasClass('lp-active')){ lpHome.removeClass('lp-active'); }
-    logoComportement();
-  })
 
+}
+function alignSubmenu() {
+  let subMenu = $('.sub-menu')
+  for (var i = 0;  i< $('.sub-menu').length; i++) {
+    let widthParent = $($('.sub-menu')[i]).parent().width()
+    $($('.sub-menu')[i]).css({
+      'left' : -((widthParent + 12) * i)
+    })
+  }
 }
 function langRedesign() {
   //langMenu
