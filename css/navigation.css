@@ -12,6 +12,9 @@ width: 100%;
 height: auto;
 position: relative;
 display: block;
+/*font-size: 1.25vw;*/
+font-size: 2.3vw;
+
 }
 
 .landscape .navigation-top {
@@ -89,6 +92,13 @@ display: block;
 }
 
 @media (min-width: 768px) {
+
+  .navigation-top {
+
+  font-size: 1.25vw;
+
+
+  }
   #top-menu > li {
     display: block;
     font-size: 0.8em;
@@ -105,6 +115,15 @@ display: block;
     visibility: hidden;
     z-index: 1;
     /* display: none; */
+  }
+
+  .traduction .sub-menu>li{
+    opacity: 1;
+    visibility: visible;
+    display: inline-block;
+  }
+  .traduction .sub-menu>li:last-child::before{
+    content: '/';
   }
 }
 

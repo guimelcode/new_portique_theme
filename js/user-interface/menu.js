@@ -53,6 +53,7 @@ export function Menu(isMobile) {
   }else{
     topMenu.find('.active').find('.sub-menu').removeClass('push-top');
     alignSubmenu();
+    changeLanguageLetter();
   }
   //categoryLink = $('#top-menu>li>a');
   //  console.log(categoryLink);
@@ -60,11 +61,19 @@ export function Menu(isMobile) {
 }
 function alignSubmenu() {
   let subMenu = $('.sub-menu')
-  for (var i = 0;  i< $('.sub-menu').length; i++) {
+  for (var i = 0;  i< $('.sub-menu').length-1; i++) {
     let widthParent = $($('.sub-menu')[i]).parent().width()
     $($('.sub-menu')[i]).css({
       'left' : -((widthParent + 12) * i)
     })
+  }
+}
+function changeLanguageLetter() {
+  let langueLinkAll = $('.traduction li a')
+  for (var i = 0; i < langueLinkAll.length; i++) {
+    let langueLink = $(langueLinkAll[i])
+    console.log(langueLink.html().substring(0,2).toUpperCase());
+    langueLink.html(langueLink.html().substring(0,2).toUpperCase())
   }
 }
 function langRedesign() {
