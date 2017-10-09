@@ -65,6 +65,88 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -302,88 +384,6 @@ Store.subscribe(handleChange)
 */
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -398,7 +398,7 @@ exports.archivePost = archivePost;
 
 var _contentUi = __webpack_require__(11);
 
-var _states = __webpack_require__(0);
+var _states = __webpack_require__(1);
 
 $ = jQuery;
 function sendPost(msg, cb) {
@@ -557,7 +557,7 @@ exports.goSectionNav = goSectionNav;
 
 var _toolBoxUi = __webpack_require__(12);
 
-var _states = __webpack_require__(0);
+var _states = __webpack_require__(1);
 
 $ = jQuery;
 
@@ -608,16 +608,37 @@ function Menu(isMobile) {
       // presentationNav();
       localStorage.setItem("introPlay", "yes");
     }
+    categoryLink.click(function (e) {
+      //  e.preventDefault();
+      console.log('categoryLink');
+      //goSectionNav()
+      //if(lpHome.hasClass('lp-active')){ lpHome.removeClass('lp-active'); }
+      logoComportement();
+    });
+  } else {
+    topMenu.find('.active').find('.sub-menu').removeClass('push-top');
+    alignSubmenu();
+    changeLanguageLetter();
   }
   //categoryLink = $('#top-menu>li>a');
   //  console.log(categoryLink);
-  categoryLink.click(function (e) {
-    //  e.preventDefault();
-    console.log('categoryLink');
-    //goSectionNav()
-    //if(lpHome.hasClass('lp-active')){ lpHome.removeClass('lp-active'); }
-    logoComportement();
-  });
+}
+function alignSubmenu() {
+  var subMenu = $('.sub-menu');
+  for (var i = 0; i < $('.sub-menu').length - 1; i++) {
+    var widthParent = $($('.sub-menu')[i]).parent().width();
+    $($('.sub-menu')[i]).css({
+      'left': -((widthParent + 12) * i)
+    });
+  }
+}
+function changeLanguageLetter() {
+  var langueLinkAll = $('.traduction li a');
+  for (var i = 0; i < langueLinkAll.length; i++) {
+    var langueLink = $(langueLinkAll[i]);
+    console.log(langueLink.html().substring(0, 2).toUpperCase());
+    langueLink.html(langueLink.html().substring(0, 2).toUpperCase());
+  }
 }
 function langRedesign() {
   //langMenu
@@ -1385,7 +1406,7 @@ var _swiper = __webpack_require__(34);
 
 var _swiper2 = _interopRequireDefault(_swiper);
 
-var _states = __webpack_require__(0);
+var _states = __webpack_require__(1);
 
 var _ajaxManager = __webpack_require__(2);
 
@@ -1577,7 +1598,7 @@ exports.whichTransitionEvent = whichTransitionEvent;
 exports.WidthChange = WidthChange;
 exports.OrientationHandler = OrientationHandler;
 
-var _states = __webpack_require__(0);
+var _states = __webpack_require__(1);
 
 function whichTransitionEvent() {
   var t = void 0,
@@ -2048,7 +2069,7 @@ module.exports = "data:application/vnd.ms-fontobject;base64,9u4AADzuAAABAAIAAAAA
 "use strict";
 
 
-var _states = __webpack_require__(0);
+var _states = __webpack_require__(1);
 
 //Require scripts
 __webpack_require__(35);
@@ -8040,7 +8061,7 @@ else if (typeof define === 'function' && define.amd) {
 "use strict";
 
 
-console.log('Coucou bande de putes');
+console.log('script working');
 $ = jQuery;
 console.log($);
 
@@ -8057,7 +8078,7 @@ var _sammy2 = _interopRequireDefault(_sammy);
 
 var _ajaxManager = __webpack_require__(2);
 
-var _states = __webpack_require__(0);
+var _states = __webpack_require__(1);
 
 var _menu = __webpack_require__(3);
 
@@ -23034,7 +23055,7 @@ if(false) {
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(0)(undefined);
 // imports
 
 
@@ -23174,15 +23195,16 @@ if(false) {
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(0)(undefined);
 // imports
 exports.i(__webpack_require__(57), "");
 exports.i(__webpack_require__(58), "");
 exports.i(__webpack_require__(65), "");
 exports.i(__webpack_require__(66), "");
+exports.i(__webpack_require__(67), "");
 
 // module
-exports.push([module.i, "/*ARCHIVE*/\n\n/*.archives-hover{\n  display: none;\n}*/\n\n.archives-hover {\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility .5s, opacity .5s;\n}\n.a-hover-open {\n  visibility: visible;\n  opacity: 1;\n  /*transition: visibility 1s, opacity 1s;*/\n\n}\n\n.archives>article {\n  position: absolute;\n  top: 20px;\n  /*padding-top: 20px;*/\n  z-index: 1000;\n  transition: top 1.2s;\n}\n\n.imgGal{\n  overflow: hidden;\n}\n\n.imgGal img{\n  display: block;\n  /*width: 300px;*/\n  width: 100%;\n  /*height: 46vh;*/\n}\n\n.imgGal .img-prev-control, .imgGal .img-next-control {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  top: 0px;\n}\n\n.img-next-control, .img-prev-control{\n  position: relative;\n    top: 50%;\n    width: 27px;\n    height: 44px;\n    margin-top: -22px;\n    z-index: 10;\n    cursor: pointer;\n    -moz-background-size: 27px 44px;\n    -webkit-background-size: 27px 44px;\n    background-size: 27px 44px;\n    background-position: center;\n    background-repeat: no-repeat;\n}\n.img-next-control{\n\t/* background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4yNjggNy4xM0w2Ljk0NC4yNjlNLjI2OCA3LjEzbDYuNzI3IDYuOTE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIuNTI5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGYiLz48L3N2Zz4=); */\n    right: 10px;\n    left: auto;\n}\n\n.img-prev-control{\n/*\tbackground-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+); */\n    left: 10px;\n    right: auto;\n}\n\n.swiper-button-prev{\n   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4yNjggNy4xM0w2Ljk0NC4yNjlNLjI2OCA3LjEzbDYuNzI3IDYuOTE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIuNTI5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGYiLz48L3N2Zz4=);\n}\n\n.swiper-button-next{\n  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+);\n}\n\n\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\nNAVIGATION\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */\n\n.navigation-top {\n  margin-top: 3em;\n  margin-bottom: 15px;\n  display: block;\n  width: 100%;\n  height: auto;\n  position: relative;\n}\n\n.landscape .navigation-top {\n  margin-top: 2em;\n}\n\n.menu-main-container {\n  height: 15vw;\n  font-size: 1.8em;\n  border-bottom: solid 1px #00f;\n  padding-bottom: 18px;\n}\n\n.landscape .menu-main-container {\n  height: 16vh;\n  font-size: 1.6em;\n  border-bottom: solid 1px #00f;\n  padding-bottom: 10px;\n}\n\n.menu-main-container a {\n  text-decoration: none;\n  color: #00f;\n  /*color: #8080ff;*/\n}\n\n.menu-main-container li {\n  list-style: none;\n}\n\n.menu {\n  z-index: 2000;\n  padding-top: 8px;\n  list-style: none;\n  background: #fff;\n  transition: 1s;\n}\n\n#top-menu {\n  transition-property: opacity;\n  transition-duration: .45s;\n}\n#top-menu > li {\n  display: none;\n  font-size: 0.8em;\n}\n\n#top-menu .active  {\n  display: block;\n}\n\n.hide-lp {\n  opacity: 0;\n}\n\n/*///*/\n\n.sub-menu {\n  padding-top: 10px;\n  position: relative;\n  top : 0;\n  margin: 0 -6px;\n  padding: 0 12px 0 0;\n  width : 76.92307692vw;\n  list-style: none;\n  visibility: hidden;\n  z-index: 1;\n  /* display: none; */\n}\n\n.active .sub-menu li {\n  visibility: visible;\n  opacity: 1;\n}\n\n.pre-mob .active .sub-menu li {\n  visibility: hidden;\n  opacity: 0;\n}\n\n.sub-menu li {\n  opacity: 0;\n  transition: opacity .15s;\n  font-size: 0.6em;\n}\n.sub-menu li a {\n  color: #8080ff;\n}\n\n.sub-menu .active a {\n  color: #00f;\n}\n/*///*/\n\n\n/*Logo header*/\n#signature-portique_LP {\n  width: 90%;\n  position: relative;\n  display: block;\n\n  margin: 0 auto;\n  transition: width .2s, padding .1s;\n}\n\n.landscape #signature-portique_LP {\n  width: 50%;\n  padding: 5%;\n\n  /*margin: 0 auto;\n  display: block;*/\n}\n.logo-mobile {\n  float: right;\n  position: absolute;\n  margin-right: 1em;\n  top: 0.4em;\n  right: 0;\n  z-index: 2000;\n}\n.lp-home {\n  display: block;\n  margin: 0 auto;\n  transform: rotate(0deg);\n  transition: transform .8s;\n}\n\n.lp-move {\n  animation: lpmove .65s;\n  animation-iteration-count: 2;\n}\n\n.lp-active {\n  transition: transform .8s;\n  transform: rotate(-38deg);\n}\n\n@keyframes lpmove {\n  0% {    transform: rotate(0deg);}\n  25% {    transform: rotate(-5deg);}\n  50% {    transform: rotate(5deg);}\n  75% {    transform: rotate(-5deg);}\n  100% {    transform: rotate(0deg);}\n\n}\n\n.pre-mob {\n  /*width: 84.61538462%;\n  padding-right: 11.53846154%;*/\n}\n.pre-mob li{\n  display: block !important;\n  width: 50%;\n}\n\n.push-top {\n  top: 1em;\n}\n\n/*Partie sociale*/\n.social-item {\n  display: block !important;\n  position: relative;\n}\n.social-item a {\n  position: relative;\n  font-size: 1.4em;\n}\n.social-item a i {\n  width: 100%;\n  text-align: center;\n}\n\n.icon-2x {\n    font-size: 0.7em!important;\n}\n\nul#mobile-footer > li > a{\n  margin-right: 7vw;\n}\n\n#mobile-footer a{\n  color: blue;\n}\n\n/* - - - - - - - - - -\nMOBILE FOOTER\n- - - - - - - - - - - */\n\nfooter.container-fluid {\n  bottom: 0;\n  position: fixed;\n  width: 100vw;\n  padding-left: 7.5vw;\n  padding-right: 7.5vw;\n  background-color: #fff;\n  z-index: 3;\n}\n\nfooter.container-fluid > .row{\n  border-top: solid blue 1px;\n}\n\nul#mobile-footer{\n  list-style-type: none;\n  display: inline-flex;\n}\n\n/* - - - - - - - - - -\nAPP\n- - - - - - - - - - - */\n\n.swiper-button-disabled{\n  visibility: hidden;\n}\n/*\n#app > div{\n  /* what if we use simplebar js library ?\n  overflow-y: scroll;\n  overflow-x: hidden;\n  /* depending on top-menu height...\n  height: 85vh;\n}\n*/\n\n#app > div > .bxslider > .swiper-slide-active{\n  /* what if we use simplebar js library ? */\n  overflow-y: scroll;\n  overflow-x: hidden;\n  /* depending on top-menu height... */\n  height: 85vh;\n}\n\n#app > div > div.bxslider > div{\n  padding-top: 20px;\n}\n\n/* - - - - - - - - - -\nARTICLES\n- - - - - - - - - - - */\nh1.titre, h2.subtitle{\n  margin-bottom: 0.3em!important;\n}\n\nh2.subtitle{\n  font-family: 'portype-italic';\n}\n\nh3.temps{\n  margin-bottom: 1em!important;\n  text-transform: uppercase;\n}\n\n/* À VENIR (article-mini) */\n.a-venir h1{\n  text-transform: uppercase;\n  font-size: 5em;\n  line-height: 0.85em;\n}\n\n.a-venir h2{\n  font-size: 2.8em;\n  line-height: 1em;\n}\n\n.a-venir h3.temps{\n  text-transform: uppercase;\n  font-size: 3em;\n}\n\n.a-venir p{\n}\n\n:not(.article_mini) > header > h1.titre, :not(.article_mini) > header > h2.subtitle, :not(.article_mini) > header > h3.temps{\n  font-size: 3em;\n  line-height: 1.1em;\n  margin: 0;\n}\n\n/* conteneur d'images */\n.thePostImages{\n  padding-bottom: 7vh;\n}\n\n/* légende */\n.swiper-slide > h2{\n  font-size: 1.7em;\n}\n\n/* - - - - - - - - - -\nARCHIVES\n- - - - - - - - - - - */\n.archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{\n  font-size: 3.2em;\n}\n\n\n.archive-link h3.temps{\n/*  margin: 0;\n  font-size: 2.5em;\n*/\n}\ndiv.archives article section.thePostText{\n  padding-bottom: 7vh;\n}\n\ndiv.archives article{\n  padding-left: 0px;\n}\n\ndiv.archives-hover > article, div.archives-hover > article > section.thePostText{\n  padding-left: 0px;\n}\n  div#expositions div.bxslider.swiper-wrapper div.archives.swiper-slide.swiper-slide-active article{\n  background-color: #fff;\n  padding-top: 0px;\n  padding-bottom: 15vh;\n}\n\n.archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{\n  margin: 0!important;\n}\n\n/*------------------------------------*\\\n  GRADIENTS\n\\*------------------------------------*/\n\n#middle-gradient{\n  z-index: 500;\n  top: -70px;\n  width: 100%;\n  height: 70px;\n  position: absolute;\n  /* Bottom grandient */\n  background-image: -webkit-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n  background-image: -o-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n  background-image: -moz-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n  background-image: linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n}\n\n#middle-solid{\n  z-index: 500;\n  bottom: 0px;\n  width:100%;\n  height: 100px;\n  position: absolute;\n  height: 35px;\n  background: #fff;\n}\n\n/* - - - - - - - - - -\nCONTACT PRESSE\n- - - - - - - - - - - */\n.contact-presse p{\n  font-size: 2.8em;\n  line-height: 1em;\n}\n\n/* - - - - - - - - - -\nÉquipe\n- - - - - - - - - - - */\n.equipe h2{\n  font-size: 2.8em;\n  line-height: 1em;\n}\n\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\nTemplate page-image.php\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */\n\nsection.page-image img{\n  min-width: 100%;\n}\n\n\n\n/* - - - - - - - - - -\nBootstrap 4 Media Queries\n- - - - - - - - - - - */\n\n@media(min-width:576px){\n\n}\n\n@media(min-width:768px){\n\n}\n\n@media(min-width:992px){\n  /* Animation blinker */\n\n  @keyframes blinker {\n    50% { opacity: 0; }\n  }\n\n\n  #top-menu > .active > a{\n    border-bottom: solid 1px #00f;\n/*    transition: 0.3s;\n    animation: blinker 1.7s linear infinite; */\n  }\n\n  /* Soulignement qui clignotte, à la même dimension du lien => Js ?\n  #top-menu > .active > a:before {\n  content: \"\";\n  position: absolute;\n  width: 40%;\n  height: 1px;\n  bottom: 0;\n  left: 0px;\n  border-bottom: 1px solid #00f;\n  transition: 0.4s;\n    animation: blinker 1.7s linear infinite;\n}\n*/\n\n  #top-menu > .active > a{\n    color: #00f !important;\n  }\n\n .sub-menu > .active a {\n    color: #00f;\n    border-bottom: solid 1px transparent;\n    transition: 0.3s;\n    animation: blinker 1.7s linear infinite;\n  }\n\n  .thePostText{\n    /* Pour compenser la présence du dégradé en bas de vue */\n    padding-bottom: 70px;\n  }\n}\n\n@media(min-width:1200px){\n  /* afficher la grille avec des intrelignages constants */\n  div.archives article section.thePostText{\n    min-height: 35vh;\n    padding-bottom: 15vh;\n  }\n\n  .imgGal{\n    position: fixed;\n    width: 50%;\n  }\n\n}\n", ""]);
+exports.push([module.i, "/*ARCHIVE*/\n\n/*.archives-hover{\n  display: none;\n}*/\n\n.archives-hover {\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility .5s, opacity .5s;\n}\n.a-hover-open {\n  visibility: visible;\n  opacity: 1;\n  /*transition: visibility 1s, opacity 1s;*/\n\n}\n\n.archives>article {\n  position: absolute;\n  top: 20px;\n  /*padding-top: 20px;*/\n  z-index: 1000;\n  transition: top 1.2s;\n}\n\n.imgGal{\n  overflow: hidden;\n}\n\n.imgGal img{\n  display: block;\n  /*width: 300px;*/\n  width: 100%;\n  /*height: 46vh;*/\n}\n\n.imgGal .img-prev-control, .imgGal .img-next-control {\n  width: 50%;\n  height: 100%;\n  position: absolute;\n  top: 0px;\n}\n\n.img-next-control, .img-prev-control{\n  position: relative;\n    top: 50%;\n    width: 27px;\n    height: 44px;\n    margin-top: -22px;\n    z-index: 10;\n    cursor: pointer;\n    -moz-background-size: 27px 44px;\n    -webkit-background-size: 27px 44px;\n    background-size: 27px 44px;\n    background-position: center;\n    background-repeat: no-repeat;\n}\n.img-next-control{\n\t/* background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4yNjggNy4xM0w2Ljk0NC4yNjlNLjI2OCA3LjEzbDYuNzI3IDYuOTE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIuNTI5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGYiLz48L3N2Zz4=); */\n    right: 10px;\n    left: auto;\n}\n\n.img-prev-control{\n/*\tbackground-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+); */\n    left: 10px;\n    right: auto;\n}\n\n.swiper-button-prev{\n   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS4yNjggNy4xM0w2Ljk0NC4yNjlNLjI2OCA3LjEzbDYuNzI3IDYuOTE0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIuNTI5IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMGYiLz48L3N2Zz4=);\n}\n\n.swiper-button-next{\n  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjcuNDQ0IiBoZWlnaHQ9IjU0LjA4NCIgdmlld0JveD0iMCAwIDcuMjYxMjA0NCAxNC4zMDk4NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuOTk0IDcuMTJMLjMxOC4yNTlNNi45OTQgNy4xMkwuMjY3IDE0LjAzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iLjUyOSIgc3Ryb2tlPSIjMDBmIi8+PC9zdmc+);\n}\n\n\n\n\n\n\n.icon-2x {\n    font-size: 0.7em!important;\n}\n\nul#mobile-footer > li > a{\n  margin-right: 7vw;\n}\n\n#mobile-footer a{\n  color: blue;\n}\n\n/* - - - - - - - - - -\nMOBILE FOOTER\n- - - - - - - - - - - */\n\nfooter.container-fluid {\n  bottom: 0;\n  position: fixed;\n  width: 100vw;\n  padding-left: 7.5vw;\n  padding-right: 7.5vw;\n  background-color: #fff;\n  z-index: 3;\n}\n\nfooter.container-fluid > .row{\n  border-top: solid blue 1px;\n}\n\nul#mobile-footer{\n  list-style-type: none;\n  display: inline-flex;\n}\n\n/* - - - - - - - - - -\nAPP\n- - - - - - - - - - - */\n\n.swiper-button-disabled{\n  visibility: hidden;\n}\n/*\n#app > div{\n  /* what if we use simplebar js library ?\n  overflow-y: scroll;\n  overflow-x: hidden;\n  /* depending on top-menu height...\n  height: 85vh;\n}\n*/\n\n#app > div > .bxslider > .swiper-slide-active{\n  /* what if we use simplebar js library ? */\n  overflow-y: scroll;\n  overflow-x: hidden;\n  /* depending on top-menu height... */\n  height: 85vh;\n}\n\n#app > div > div.bxslider > div{\n  padding-top: 20px;\n}\n\n/* - - - - - - - - - -\nARTICLES\n- - - - - - - - - - - */\nh1.titre, h2.subtitle{\n  margin-bottom: 0.3em!important;\n}\n\nh2.subtitle{\n  font-family: 'portype-italic';\n}\n\nh3.temps{\n  margin-bottom: 1em!important;\n  text-transform: uppercase;\n}\n\n/* À VENIR (article-mini) */\n.a-venir h1{\n  text-transform: uppercase;\n  font-size: 5em;\n  line-height: 0.85em;\n}\n\n.a-venir h2{\n  font-size: 2.8em;\n  line-height: 1em;\n}\n\n.a-venir h3.temps{\n  text-transform: uppercase;\n  font-size: 3em;\n}\n\n.a-venir p{\n}\n\n:not(.article_mini) > header > h1.titre, :not(.article_mini) > header > h2.subtitle, :not(.article_mini) > header > h3.temps{\n  font-size: 3em;\n  line-height: 1.1em;\n  margin: 0;\n}\n\n/* conteneur d'images */\n.thePostImages{\n  padding-bottom: 7vh;\n}\n\n/* légende */\n.swiper-slide > h2{\n  font-size: 1.7em;\n}\n\n/* - - - - - - - - - -\nARCHIVES\n- - - - - - - - - - - */\n.archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{\n  font-size: 3.2em;\n}\n\n\n.archive-link h3.temps{\n/*  margin: 0;\n  font-size: 2.5em;\n*/\n}\ndiv.archives article section.thePostText{\n  padding-bottom: 7vh;\n}\n\ndiv.archives article{\n  padding-left: 0px;\n}\n\ndiv.archives-hover > article, div.archives-hover > article > section.thePostText{\n  padding-left: 0px;\n}\n  div#expositions div.bxslider.swiper-wrapper div.archives.swiper-slide.swiper-slide-active article{\n  background-color: #fff;\n  padding-top: 0px;\n  padding-bottom: 15vh;\n}\n\n.archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{\n  margin: 0!important;\n}\n\n/*------------------------------------*\\\n  GRADIENTS\n\\*------------------------------------*/\n\n#middle-gradient{\n  z-index: 500;\n  top: -70px;\n  width: 100%;\n  height: 70px;\n  position: absolute;\n  /* Bottom grandient */\n  background-image: -webkit-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n  background-image: -o-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n  background-image: -moz-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n  background-image: linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n}\n\n#middle-solid{\n  z-index: 500;\n  bottom: 0px;\n  width:100%;\n  height: 100px;\n  position: absolute;\n  height: 35px;\n  background: #fff;\n}\n\n/* - - - - - - - - - -\nCONTACT PRESSE\n- - - - - - - - - - - */\n.contact-presse p{\n  font-size: 2.8em;\n  line-height: 1em;\n}\n\n/* - - - - - - - - - -\nÉquipe\n- - - - - - - - - - - */\n.equipe h2{\n  font-size: 2.8em;\n  line-height: 1em;\n}\n\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\nTemplate page-image.php\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */\n\nsection.page-image img{\n  min-width: 100%;\n}\n\n\n\n/* - - - - - - - - - -\nBootstrap 4 Media Queries\n- - - - - - - - - - - */\n\n@media(min-width:576px){\n\n}\n\n@media(min-width:768px){\n\n}\n\n@media(min-width:992px){\n  /* Animation blinker */\n\n  @keyframes blinker {\n    50% { opacity: 0; }\n  }\n\n\n  #top-menu > .active > a{\n    border-bottom: solid 1px #00f;\n/*    transition: 0.3s;\n    animation: blinker 1.7s linear infinite; */\n  }\n\n  /* Soulignement qui clignotte, à la même dimension du lien => Js ?\n  #top-menu > .active > a:before {\n  content: \"\";\n  position: absolute;\n  width: 40%;\n  height: 1px;\n  bottom: 0;\n  left: 0px;\n  border-bottom: 1px solid #00f;\n  transition: 0.4s;\n    animation: blinker 1.7s linear infinite;\n}\n*/\n\n  #top-menu > .active > a{\n    color: #00f !important;\n  }\n\n .sub-menu > .active a {\n    color: #00f;\n    border-bottom: solid 1px transparent;\n    transition: 0.3s;\n    animation: blinker 1.7s linear infinite;\n  }\n\n  .thePostText{\n    /* Pour compenser la présence du dégradé en bas de vue */\n    padding-bottom: 70px;\n  }\n}\n\n@media(min-width:1200px){\n  /* afficher la grille avec des intrelignages constants */\n  div.archives article section.thePostText{\n    min-height: 35vh;\n    padding-bottom: 15vh;\n  }\n\n  .imgGal{\n    position: fixed;\n    width: 50%;\n  }\n\n}\n", ""]);
 
 // exports
 
@@ -23191,7 +23213,7 @@ exports.push([module.i, "/*ARCHIVE*/\n\n/*.archives-hover{\n  display: none;\n}*
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(0)(undefined);
 // imports
 
 
@@ -23205,7 +23227,7 @@ exports.push([module.i, "\n\n\n/*------------------------------------*\\\n    Pa
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(0)(undefined);
 // imports
 
 
@@ -23255,12 +23277,12 @@ module.exports = "data:application/font-woff;base64,d09GRgABAAAAAIV4ABMAAAAA7pgA
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(0)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\nGLOBAL HTML SETTINGS\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */\n\n/* global box-sizing */\n*,\n*:after,\n*:before {\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  -webkit-font-smoothing:antialiased;\n  font-smoothing:antialiased;\n  text-rendering:optimizeLegibility;\n}\n/* html element 62.5% font-size for REM use */\nhtml {\n  font-size:12px;\n}\n\nbody {\n  font-family: 'portype-regular', Helvetica, Arial, sans-serif;\n  color: #00f;\n  background: #fff;\n  font-size: .84em;\n  line-height: 1.2em;\n  font-weight: 100;\n}\n\ndiv {\n  -webkit-box-shadow: 0 0 0px transparent!important;\n  box-shadow: 0 0 0px transparent!important;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: 2.2em;\n  font-weight: 100;\n  line-height: 1.2em;\n}\n\np{\n  font-size: 2em;\n  line-height: 1.2em;\n}\n\nul, li{\n  font-size: 1.7em;\n  line-height: 1.2em;\n}\n\n\na {\n  color: #0000ff;\n\ttext-decoration:none;\n  }\n\na:hover {\n  text-decoration:none;\n  color: #8080ff;\n  transition: 0.7s;\n\t}\n\na:focus {\n  text-decoration:none;\n  outline:none\n\t}\n\na:active {\n  text-decoration:none;\n  outline:none\n\t}\n\nul {\n  margin: 0;\n  padding: 0px;\n}\n\n.site {\n  top: 0;\n  left: 0;\n  right: 0;\n  display: block;\n  width: 100%;\n  height: 100vh;\n  position: fixed;\n}\n\n\n/*------------------------------------*\\\n    MISC\n\\*------------------------------------*/\n\n::selection {\n\tbackground:#00f;\n\tcolor:#FFF;\n\ttext-shadow:none;\n}\n::-webkit-selection {\n\tbackground:#00F;\n\tcolor:#FFF;\n\ttext-shadow:none;\n}\n::-moz-selection {\n\tbackground:#00F;\n\tcolor:#FFF;\n\ttext-shadow:none;\n}\n\n\n/*------------------------------------*\\\n    PRINT\n\\*------------------------------------*/\n\n@media print {\n\t* {\n\t\tbackground:transparent !important;\n\t\tcolor:#000 !important;\n\t\tbox-shadow:none !important;\n\t\ttext-shadow:none !important;\n\t}\n\ta,\n\ta:visited {\n\t\ttext-decoration:underline;\n\t}\n\ta[href]:after {\n\t\tcontent:\" (\" attr(href) \")\";\n\t}\n\tabbr[title]:after {\n\t\tcontent:\" (\" attr(title) \")\";\n\t}\n\t.ir a:after,\n\ta[href^=\"javascript:\"]:after,\n\ta[href^=\"#\"]:after {\n\t\tcontent:\"\";\n\t}\n\tpre,blockquote {\n\t\tborder:1px solid #999;\n\t\tpage-break-inside:avoid;\n\t}\n\tthead {\n\t\tdisplay:table-header-group;\n\t}\n\ttr,img {\n\t\tpage-break-inside:avoid;\n\t}\n\timg {\n\t\tmax-width:100% !important;\n\t}\n\t@page {\n\t\tmargin:0.5cm;\n\t}\n\tp,\n\th2,\n\th3 {\n\t\torphans:3;\n\t\twidows:3;\n\t}\n\th2,\n\th3 {\n\t\tpage-break-after:avoid;\n\t}\n}\n", ""]);
+exports.push([module.i, "/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\nGLOBAL HTML SETTINGS\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */\n\n/* global box-sizing */\n*,\n*:after,\n*:before {\n  -moz-box-sizing:border-box;\n  box-sizing:border-box;\n  -webkit-font-smoothing:antialiased;\n  font-smoothing:antialiased;\n  text-rendering:optimizeLegibility;\n}\n/* html element 62.5% font-size for REM use */\nhtml {\n  font-size:12px;\n}\n\nbody {\n  font-family: 'portype-regular', Helvetica, Arial, sans-serif;\n  color: #00f;\n  background: #fff;\n  font-size: .84em;\n  line-height: 1.2em;\n  font-weight: 100;\n}\n\ndiv {\n  -webkit-box-shadow: 0 0 0px transparent!important;\n  box-shadow: 0 0 0px transparent!important;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: 2.2em;\n  font-weight: 100;\n  line-height: 1.2em;\n}\n\np{\n  font-size: 2em;\n  line-height: 1.2em;\n}\n\nul, li{\n  font-size: 1.7em;\n  line-height: 1.65em;\n}\n\n\na {\n  color: #0000ff;\n\ttext-decoration:none;\n  }\n\na:hover {\n  text-decoration:none;\n  color: #8080ff;\n  transition: 0.7s;\n\t}\n\na:focus {\n  text-decoration:none;\n  outline:none\n\t}\n\na:active {\n  text-decoration:none;\n  outline:none\n\t}\n\nul {\n  margin: 0;\n  padding: 0px;\n}\n\n.site {\n  top: 0;\n  left: 0;\n  right: 0;\n  display: block;\n  width: 100%;\n  height: 100vh;\n  position: fixed;\n}\n\n\n/*------------------------------------*\\\n    MISC\n\\*------------------------------------*/\n\n::selection {\n\tbackground:#00f;\n\tcolor:#FFF;\n\ttext-shadow:none;\n}\n::-webkit-selection {\n\tbackground:#00F;\n\tcolor:#FFF;\n\ttext-shadow:none;\n}\n::-moz-selection {\n\tbackground:#00F;\n\tcolor:#FFF;\n\ttext-shadow:none;\n}\n\n\n/*------------------------------------*\\\n    PRINT\n\\*------------------------------------*/\n\n@media print {\n\t* {\n\t\tbackground:transparent !important;\n\t\tcolor:#000 !important;\n\t\tbox-shadow:none !important;\n\t\ttext-shadow:none !important;\n\t}\n\ta,\n\ta:visited {\n\t\ttext-decoration:underline;\n\t}\n\ta[href]:after {\n\t\tcontent:\" (\" attr(href) \")\";\n\t}\n\tabbr[title]:after {\n\t\tcontent:\" (\" attr(title) \")\";\n\t}\n\t.ir a:after,\n\ta[href^=\"javascript:\"]:after,\n\ta[href^=\"#\"]:after {\n\t\tcontent:\"\";\n\t}\n\tpre,blockquote {\n\t\tborder:1px solid #999;\n\t\tpage-break-inside:avoid;\n\t}\n\tthead {\n\t\tdisplay:table-header-group;\n\t}\n\ttr,img {\n\t\tpage-break-inside:avoid;\n\t}\n\timg {\n\t\tmax-width:100% !important;\n\t}\n\t@page {\n\t\tmargin:0.5cm;\n\t}\n\tp,\n\th2,\n\th3 {\n\t\torphans:3;\n\t\twidows:3;\n\t}\n\th2,\n\th3 {\n\t\tpage-break-after:avoid;\n\t}\n}\n", ""]);
 
 // exports
 
@@ -23269,12 +23291,26 @@ exports.push([module.i, "/* = = = = = = = = = = = = = = = = = = = = = = = = = = 
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
+exports = module.exports = __webpack_require__(0)(undefined);
 // imports
 
 
 // module
 exports.push([module.i, "\n\n/*------------------------------------*\\\nSIGNATURE PORTIQUE\n\\*------------------------------------*/\n\n#signature-portique {\n  font-size: 2.5em;\n  visibility: hidden;\n}\n\n#signature-portique > img{\n  position: fixed;\n  z-index: 60000;\n  padding: 15px;\n  pointer-events: none;\n}\n\n#signature-portique_LE{\n  top: 0px;\n  left: 0px;\n}\n\n#signature-portique_PORTIQUE{\n  top: 0px;\n  right: 0px;\n}\n\n#signature-portique_CENTRE-REGIONAL{\n  bottom: 0px;\n  right: -6px;\n}\n\n#signature-portique_D-ART-CONTEMPORAIN-DU-HAVRE{\n  bottom: 0px;\n  left: 0px;\n}\n\n/* signature margins */\n\n.signature_margin{\n  background: transparent;\n  opacity: 0;\n  z-index:2000;\n}\n\n.signature_margin.left{\n  top: 0px;\n  left: 0px;\n  height: 100%;\n  width: 2.3em;\n  position: fixed;\n}\n\n.signature_margin.right{\n  top: 0px;\n  right: 0px;\n  height: 100%;\n  width: 2.3em;\n  position: fixed;\n}\n\n.signature_margin.bottom{\n  bottom: 0px;\n  width:100%;\n  height: 0em;\n  position: fixed;\n}\n\n\n/* - - - - - - - - - - - -\n  SIGNATURE MEDIA QUERIES\n- - - - - - - - - - - - */\n\n@media(min-width:576px){\n\n}\n\n@media(min-width:768px){\n  #signature-portique {\n    font-size: 1.75em;\n    visibility: visible;\n }\n\n /*------------------------------------*\\\n     BOTTOM GRADIENT\n \\*------------------------------------*/\n\n #bottom-gradient{\n   z-index: 500;\n   bottom: 35px;\n   width: 100%;\n   height: 70px;\n   position: fixed;\n   /* Bottom grandient */\n   background-image: -webkit-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n   background-image: -o-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n   background-image: -moz-linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n   background-image: linear-gradient(rgba(255,255,255,0.001) 0%, #fff 100%,  #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%, #fff 100%);\n }\n\n #bottom-solid{\n   z-index: 500;\n   bottom: 0px;\n   width:100%;\n   height: 100px;\n   position: fixed;\n   height: 35px;\n   background: #fff;\n }\n\n}\n\n@media(min-width:992px){\n\n}\n\n@media(min-width:1200px){\n\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\nNAVIGATION\n/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */\n\n.navigation-top {\n  /*margin-top: 3em;*/\n  /* margin-top: 3em; */\nmargin-top: 2em;\n/* margin-bottom: 15px; */\ndisplay: block;\nwidth: 100%;\nheight: auto;\nposition: relative;\ndisplay: block;\n/*font-size: 1.25vw;*/\nfont-size: 2.3vw;\n\n}\n\n.landscape .navigation-top {\n  margin-top: 2em;\n}\n\n.menu-main-container {\n  /*height: 15vw;*/\n  height: auto;\n  min-height: 5em;\n  font-size: 1.8em;\n\n  border-bottom: solid 1px #00f;\n  padding-bottom: 18px;\n}\n\n.landscape .menu-main-container {\n  height: 16vh;\n  font-size: 1.6em;\n  border-bottom: solid 1px #00f;\n  padding-bottom: 10px;\n}\n\n.menu-main-container a {\n  text-decoration: none;\n  color: #00f;\n  /*color: #8080ff;*/\n}\n\n.menu-main-container li {\n  list-style: none;\n}\n\n.menu {\n  z-index: 2000;\n  padding-top: 8px;\n  list-style: none;\n  background: #fff;\n  transition: 1s;\n}\n\n#top-menu {\n  transition-property: opacity;\n  transition-duration: .45s;\n}\n#top-menu > li {\n  display: none;\n  font-size: 0.8em;\n  line-height: 1.4em;\n}\n\n#top-menu .active  {\n  display: block;\n}\n\n\n\n.hide-lp {\n  opacity: 0;\n}\n\n/*///*/\n\n.sub-menu {\n  /*padding-top: 10px;*/\n  position: absolute;\n  top : 0;\n  margin: 0 -6px;\n  padding: 0.15em 12px 0 0;\n  width : 76.92307692vw;\n  list-style: none;\n  visibility: hidden;\n  z-index: 1;\n  /* display: none; */\n}\n\n@media (min-width: 768px) {\n\n  .navigation-top {\n\n  font-size: 1.25vw;\n\n\n  }\n  #top-menu > li {\n    display: block;\n    font-size: 0.8em;\n    line-height: 1.4em;\n  }\n  .sub-menu {\n    /*padding-top: 10px;*/\n    position: relative;\n    top : 0;\n    margin: 0 -6px;\n    padding: 0.15em 24px 0 0;\n    width : 92.30769231vw;\n    list-style: none;\n    visibility: hidden;\n    z-index: 1;\n    /* display: none; */\n  }\n\n  .traduction .sub-menu>li{\n    opacity: 1;\n    visibility: visible;\n    display: inline-block;\n  }\n  .traduction .sub-menu>li:last-child::before{\n    content: '/';\n  }\n}\n\n.active .sub-menu li {\n  visibility: visible;\n  opacity: 1;\n}\n\n.pre-mob .active .sub-menu li {\n  visibility: hidden;\n  opacity: 0;\n}\n\n.sub-menu li {\n  opacity: 0;\n  transition: opacity .15s;\n  font-size: 0.6em;\n  margin-top: -8px;\n}\n.sub-menu li a {\n  color: #8080ff;\n}\n\n.sub-menu .active a {\n  color: #00f;\n}\n/*///*/\n\n/*Logo header*/\n#signature-portique_LP {\n  /* width: 90%; */\n  max-height: 5em;\n  position: relative;\n  display: block;\n\n  margin: 0 auto;\n  transition: width .2s, padding .1s;\n}\n\n.landscape #signature-portique_LP {\n  width: 50%;\n  padding: 5%;\n\n  /*margin: 0 auto;\n  display: block;*/\n}\n.logo-mobile {\n  float: right;\n  position: absolute;\n  /*margin-right: 1em;\n  top: 0.4em;*/\n  margin-right: 3em;\n  top: 1.4em;\n  right: 0;\n  z-index: 2000;\n}\n.lp-home {\n  display: block;\n  margin: 0 auto;\n  transform: rotate(0deg);\n  transition: transform .8s;\n}\n\n.lp-move {\n  animation: lpmove .65s;\n  animation-iteration-count: 2;\n}\n\n.lp-active {\n  transition: transform .8s;\n  transform: rotate(-38deg);\n}\n\n@keyframes lpmove {\n  0% {    transform: rotate(0deg);}\n  25% {    transform: rotate(-5deg);}\n  50% {    transform: rotate(5deg);}\n  75% {    transform: rotate(-5deg);}\n  100% {    transform: rotate(0deg);}\n\n}\n\n.pre-mob {\n  /*width: 84.61538462%;\n  padding-right: 11.53846154%;*/\n}\n.pre-mob li{\n  display: block !important;\n  /*width: 50%;*/\n}\n\n.push-top {\n  top: .75em;\n}\n\n/*Partie sociale*/\n.social-item {\n  display: block !important;\n  position: relative;\n}\n.social-item a {\n  position: relative;\n  font-size: 1.4em;\n}\n.social-item a i {\n  width: 100%;\n  text-align: center;\n}\n\n\n\n\n\n/* - - - - - - - - - -\nBootstrap 4 Media Queries\n- - - - - - - - - - - */\n\n@media(min-width:576px){\n\n}\n\n@media(min-width:768px){\n\n}\n\n@media(min-width:992px){\n  #site-navigation a {\n      font-size: 0.6em;\n  }\n  .navigation-top {\n      font-size: 1.25vw;\n      margin-top: 0px !important;\n  }\n\n  .sub-menu li {\n    line-height: 0.5em;\n}\n\n}\n\n@media(min-width:1200px){\n\n\n}\n", ""]);
 
 // exports
 
