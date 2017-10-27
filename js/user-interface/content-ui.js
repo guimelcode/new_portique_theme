@@ -36,6 +36,8 @@ export function ContentInject(data, cb) {
       GallerySlider()
       // console.log($($(data)[0]).attr('id'));
       if($($(data)[0]).attr('id')){Archives()}
+      console.log('TESTESTESTEStttttt');
+      console.log($('.acf-map').length);
       if($('.acf-map').length > 0){
         $('.acf-map').each(function(){
 
