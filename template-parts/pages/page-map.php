@@ -20,6 +20,7 @@
   <!-- -->
   <?php
   $location = get_field('carte');
+  var_dump($location);
   if( !empty($location) ):
   ?>
   <div class="acf-map">
