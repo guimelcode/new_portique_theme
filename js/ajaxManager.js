@@ -1,5 +1,5 @@
 $ = jQuery;
-import {ContentInject} from './user-interface/content-ui';
+import {ContentInject, GallerySlider} from './user-interface/content-ui';
 import {Store} from './states'
 
 
@@ -91,7 +91,7 @@ export function archivePost(postID, postTitle, cb) {
                 console.log(GalHeight);
                 console.log(defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom);
                 console.log(archivesHover.find('.thePostImages').clientHeight);
-
+                GallerySlider();
                 archivesArticle.css({
                   'top' : defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom
                 })

@@ -3,6 +3,7 @@ $ = jQuery;
 import Swiper from 'swiper'
 import {Store} from '../states'
 import {archivePost} from '../ajaxManager';
+import {render_map} from '../google-maps.js';
 // import * from './menu';
 export let SwipperSystem;
 
@@ -35,7 +36,13 @@ export function ContentInject(data, cb) {
       GallerySlider()
       // console.log($($(data)[0]).attr('id'));
       if($($(data)[0]).attr('id')){Archives()}
+      if($('.acf-map').length() > 0){
+        $('.acf-map').each(function(){
 
+          render_map( $(this) );
+
+        });
+      }
       cb();
     });
   })
