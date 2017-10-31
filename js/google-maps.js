@@ -175,7 +175,7 @@ $ = jQuery;
 */
 
 export function render_map( $el ) {
-
+  
   // var
   let $markers = $el.find('.marker');
 
