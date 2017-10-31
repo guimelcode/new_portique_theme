@@ -1,6 +1,7 @@
 //webpack.config.js
 
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = function(env) {
   return {
@@ -19,10 +20,18 @@ module.exports = function(env) {
 
         },
         {test: /\.html$/, loader: 'raw-loader', exclude: /node_modules/},
-        {test: /\.css$/, loader: "style-loader!css-loader",},
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract("css-loader"),
+        },
         // {test: /\.scss$/, loader: "style-loader!css-loader!sass-loader", exclude: /node_modules/, include: [/node_modules\/swiper/]},
         {test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'url-loader'}
       ]
     },
+    plugins: [
+       new ExtractTextPlugin("bundle.css", {
+           allChunks: true
+       })
+   ]
   }
 }

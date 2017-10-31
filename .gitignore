@@ -12,6 +12,11 @@ dist/bundle.js
 
 dist/bundle.js.map
 
+
+dist/bundle.min.css
+
+dist/bundle.min.css.map
+
 # Runtime data
 pids
 *.pid
