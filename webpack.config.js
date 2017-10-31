@@ -2,7 +2,9 @@
 
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+let cssLoader = [{
+  loader : 'css-loader', options : {minimize : true}
+}]
 module.exports = function(env) {
   return {
     entry: "./js/app.js",
@@ -22,7 +24,7 @@ module.exports = function(env) {
         {test: /\.html$/, loader: 'raw-loader', exclude: /node_modules/},
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract("css-loader"),
+          loader: ExtractTextPlugin.extract(cssLoader),
         },
         // {test: /\.scss$/, loader: "style-loader!css-loader!sass-loader", exclude: /node_modules/, include: [/node_modules\/swiper/]},
         {test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'url-loader'}
