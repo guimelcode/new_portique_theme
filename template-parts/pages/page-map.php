@@ -20,7 +20,7 @@
   <!-- -->
   <?php
   $location = get_field('carte', $post->ID);
-  var_dump($location);
+
   if( !empty($location) ):
   ?>
   <div class="acf-map">
