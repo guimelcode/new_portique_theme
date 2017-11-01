@@ -55,7 +55,8 @@ a {
 
 a:hover {
   text-decoration:none;
-  color: #8080ff;
+  color: #00f;
+  /* color: #8080ff; */
   transition: 0.7s;
 	}
 

@@ -337,10 +337,11 @@ Bootstrap 4 Media Queries
 
   #top-menu > .active > a{
     color: #00f !important;
+        animation: blinker 1.7s linear infinite;
   }
 
  .sub-menu > .active a {
-    color: #00f;
+    color: #00f!important;
     border-bottom: solid 1px transparent;
     transition: 0.3s;
     animation: blinker 1.7s linear infinite;

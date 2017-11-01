@@ -151,10 +151,10 @@ NAVIGATION
   line-height: 1.2em !important;
 }
 
-.sub-menu li a {
-/*  color: #8080ff; */
-  color: #00f;
+ .sub-menu li a {
+   color: #00f!important;
 }
+
 
 .sub-menu .active a {
   color: #00f;

@@ -155,7 +155,8 @@ NAVIGATION
   transition: opacity .15s;
 }
 .sub-menu li a {
-  color: #8080ff;
+  color:#00f;
+/*  color: #8080ff; */
 }
 
 .sub-menu .active a {
