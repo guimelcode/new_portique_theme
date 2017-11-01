@@ -51,7 +51,7 @@ export function ContentInject(data, cb) {
 
 }
 
-function GallerySlider(){
+export function GallerySlider(){
   console.log('GallerySlider GO');
   console.log($('.imgWrap'));
   let imgSwiper = new Swiper('.imgGal', {
