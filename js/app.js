@@ -10,5 +10,4 @@ require('./user-interface/user-interface');
 import {Store} from './states'
 
 
-
 //Store.dispatch({type:'CHANGE_LANGUAGE', lang: 'en'})

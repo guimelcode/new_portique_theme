@@ -1,5 +1,5 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.css');
-
+@import url('../node_modules/simplebar/dist/simplebar.css');
 @import url('./font.css');
 @import url('./global-html.css');
 @import url('./signature.css');
@@ -146,7 +146,7 @@ APP
 
 #app > div > .bxslider > .swiper-slide-active{
   /* what if we use simplebar js library ? */
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   overflow-x: hidden;
   /* depending on top-menu height... */
   height: 85vh;
