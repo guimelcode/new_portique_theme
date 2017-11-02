@@ -96,6 +96,7 @@ function Slider() {
   SwipperSystem = new Swiper('#' + Store.getState().category + '', {
     'speed': 500,
     'direction': 'horizontal',
+    'touchReleaseOnEdges': true,
     'nextButton': '.swiper-button-next',
     'prevButton': '.swiper-button-prev',
     'slidesPerView': 1,
