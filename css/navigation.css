@@ -16,8 +16,9 @@ NAVIGATION
 /*  font-size: 2.3vw; latest*/
 }
 
-#site-navigation{
+nav#site-navigation{
   padding-top: 1em;
+    border-bottom: solid 1px #00f;
 }
 
 .landscape .navigation-top {
@@ -29,7 +30,7 @@ NAVIGATION
   height: auto;
   min-height: 5em;
 /*  font-size: 1.8em; latest*/
-  border-bottom: solid 1px #00f;
+/*  border-bottom: solid 1px #00f; latest-2*/
   padding-bottom: 18px;
 }
 
@@ -278,16 +279,22 @@ Bootstrap 4 Media Queries
 
 /* fixing menu final countdtown */
 .menu-main-container{
-  height: 6em!important;
-  border-bottom: solid 1px #00f;
+/*  height: 6em!important; */
+  border-bottom: none!important;
 }
 
 nav#site-navigation{
   height: 6em!important;
+  border-bottom: solid 1px #00f!important;
 }
 
-ul.sub-menu{
+.landscape .menu-main-container {
+    height: 6em;
+}
+
+ul.sub-menu li.qtranxs-lang-menu-item {
   position: absolute;
+  float: right;
 }
 
 
