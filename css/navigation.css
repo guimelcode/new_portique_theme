@@ -27,7 +27,6 @@ nav#site-navigation{
 
 .menu-main-container {
   /*height: 15vw;*/
-/*  height: auto; */
   min-height: 5em;
 /*  font-size: 1.8em; latest*/
 /*  border-bottom: solid 1px #00f; latest-2*/
@@ -169,7 +168,6 @@ nav#site-navigation{
   max-height: 5em;
   position: relative;
   display: block;
-
   margin: 0 auto;
   transition: width .2s, padding .1s;
 }
@@ -280,12 +278,10 @@ Bootstrap 4 Media Queries
 
 /* fixing menu final countdtown */
 .menu-main-container{
-  height: auto!important;
   border-bottom: none!important;
 }
 
 nav#site-navigation{
-
   height: 6em!important;
   border-bottom: solid 1px #00f!important;
 }
@@ -301,6 +297,10 @@ ul.sub-menu li.qtranxs-lang-menu-item {
 
 #app > div > div.bxslider > div {
     padding-top: 0px;
+}
+
+.landscape .menu-main-container {
+    min-height: auto;
 }
 
 
