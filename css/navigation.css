@@ -280,7 +280,7 @@ Bootstrap 4 Media Queries
 
 /* fixing menu final countdtown */
 .menu-main-container{
-/*  height: 6em!important; */
+ height: 0px;
   border-bottom: none!important;
 }
 
