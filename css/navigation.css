@@ -31,6 +31,7 @@ nav#site-navigation{
   min-height: 5em;
 /*  font-size: 1.8em; latest*/
 /*  border-bottom: solid 1px #00f; latest-2*/
+  border-bottom: none;
   padding-bottom: 18px;
 }
 
