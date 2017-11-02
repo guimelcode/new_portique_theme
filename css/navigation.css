@@ -276,6 +276,21 @@ Bootstrap 4 Media Queries
   line-height: 0.8em !important;
 }
 
+/* fixing menu final countdtown */
+.menu-main-container{
+  height: 6em!important;
+  border-bottom: solid 1px #00f;
+}
+
+nav#site-navigation{
+  height: 6em!important;
+}
+
+ul.sub-menu{
+  position: absolute;
+}
+
+
 }
 
 @media(min-width:1200px){
