@@ -5,6 +5,21 @@
 @import url('./signature.css');
 @import url('./navigation.css');
 
+
+/*SIMBLEBAR STYLE*/
+.simplebar-scrollbar {
+    position: absolute;
+    right: 8px;
+    border-radius: 7px;
+    min-height: 10px;
+    width: 1px;
+    opacity: 0;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+    background: #000;
+    background-clip: padding-box;
+}
+
 /*ARCHIVE*/
 
 /*.archives-hover{

@@ -22,9 +22,9 @@ function ContentDisplay(cb) {
   $('#app').fadeIn(200, function() {
     // console.log('ContentDisplay finish');
 
-    console.log(SimpleBar);
+    // console.log(SimpleBar);
     let slides = $(this).find('.swiper-slide');
-    console.log(slides);
+    // console.log(slides);
     for (var i = 0; i < slides.length; i++) {
        console.log(slides[i]);
       new SimpleBar(slides[i], {
