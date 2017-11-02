@@ -27,7 +27,7 @@ nav#site-navigation{
 
 .menu-main-container {
   /*height: 15vw;*/
-  height: auto;
+/*  height: auto; */
   min-height: 5em;
 /*  font-size: 1.8em; latest*/
 /*  border-bottom: solid 1px #00f; latest-2*/
@@ -280,12 +280,12 @@ Bootstrap 4 Media Queries
 
 /* fixing menu final countdtown */
 .menu-main-container{
- height: 0px;
+  height: auto!important;
   border-bottom: none!important;
 }
 
 nav#site-navigation{
-  min-height: 0px;
+
   height: 6em!important;
   border-bottom: solid 1px #00f!important;
 }
