@@ -305,7 +305,7 @@ Template page-image.php
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 section.page-image img{
-  min-width: 100%;
+  width: 100%;
 }
 
 
