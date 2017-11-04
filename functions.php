@@ -5,6 +5,11 @@
 * @package new_portique_theme
 */
 
+add_action('get_header', 'remove_admin_login_header');
+function remove_admin_login_header() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
 function menu(){
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(

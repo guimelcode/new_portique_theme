@@ -379,11 +379,12 @@ function archivePost(postID, postTitle, cb) {
                 console.log(GalHeight);
                 console.log(defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom);
                 console.log(archivesHover.find('.thePostImages').clientHeight);
-                (0, _contentUi.GallerySlider)();
+
                 archivesArticle.css({
                   'top': defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom
                 });
               }, 750);
+              (0, _contentUi.GallerySlider)();
             });
           }, 900);
         });
@@ -1330,7 +1331,7 @@ function ContentDisplay(cb) {
   $('#app').fadeIn(200, function () {
     // console.log('ContentDisplay finish');
 
-    // console.log(SimpleBar);
+    console.log(_simplebar2.default);
     var slides = $(this).find('.swiper-slide');
     // console.log(slides);
     for (var i = 0; i < slides.length; i++) {
@@ -1378,19 +1379,31 @@ function GallerySlider() {
   var imgSwiper = new _swiper2.default('.imgGal', {
     // 'speed': 500,
     // 'direction' : 'horizontal',
-    'nextButton': '.img-next-control',
-    'prevButton': '.img-prev-control',
+    nextButton: '.img-next-control',
+    prevButton: '.img-prev-control',
     // 'wrapperClass' : 'imgWrap',
     // 'slideClass': 'img-swiper-slide',
     // 'slidesPerView': 1,
-    'nested': true
+    nested: true,
     // 'touchEventsTarget' : 'wrapper',
     // 'width' : '100%',
     //  'simulateTouch':false,
     //  'spaceBetween': 300,
     //     'effect': 'fade'
+    preloadImages: false,
+    // Enable lazy loading
+    lazyLoading: {
+      loadPrevNext: true
+    },
+    watchSlidesVisibility: true
+
   });
   console.log(imgSwiper);
+  console.log(imgSwiper[0]);
+  //console.log(imgSwiper[0].lazy);
+  // imgSwiper.lazy.load(function(){
+  //   console.log('MERDEDEDEDE');
+  // })
 }
 
 function Slider() {

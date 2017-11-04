@@ -83,13 +83,13 @@ export function archivePost(postID, postTitle, cb) {
                 console.log(GalHeight);
                 console.log(defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom);
                 console.log(archivesHover.find('.thePostImages').clientHeight);
-                GallerySlider();
+
                 archivesArticle.css({
                   'top': defaultPaddingTop + TextHeight + GalHeight + defaultPaddingBottom
                 })
 
               }, 750);
-
+              GallerySlider();
             });
           }, 900)
 

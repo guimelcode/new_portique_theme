@@ -22,11 +22,11 @@ function ContentDisplay(cb) {
   $('#app').fadeIn(200, function() {
     // console.log('ContentDisplay finish');
 
-    // console.log(SimpleBar);
+    console.log(SimpleBar);
     let slides = $(this).find('.swiper-slide');
     // console.log(slides);
     for (var i = 0; i < slides.length; i++) {
-       console.log(slides[i]);
+      console.log(slides[i]);
       new SimpleBar(slides[i], {
         scrollbarMinSize : 4
       });
@@ -75,19 +75,31 @@ export function GallerySlider() {
   let imgSwiper = new Swiper('.imgGal', {
     // 'speed': 500,
     // 'direction' : 'horizontal',
-    'nextButton': '.img-next-control',
-    'prevButton': '.img-prev-control',
+    nextButton: '.img-next-control',
+    prevButton: '.img-prev-control',
     // 'wrapperClass' : 'imgWrap',
     // 'slideClass': 'img-swiper-slide',
     // 'slidesPerView': 1,
-    'nested': true,
+    nested: true,
     // 'touchEventsTarget' : 'wrapper',
     // 'width' : '100%',
     //  'simulateTouch':false,
     //  'spaceBetween': 300,
     //     'effect': 'fade'
+    preloadImages: false,
+    // Enable lazy loading
+    lazyLoading : {
+      loadPrevNext: true,
+    },
+    watchSlidesVisibility: true
+
   });
   console.log(imgSwiper);
+  console.log(imgSwiper[0]);
+  //console.log(imgSwiper[0].lazy);
+  // imgSwiper.lazy.load(function(){
+  //   console.log('MERDEDEDEDE');
+  // })
 }
 
 function Slider() {

@@ -51,13 +51,9 @@
 
       <!-- </div> -->
 
-      <div class="imgGal cols-xs-26">
-        <div class='img-prev-control' >
-
-        </div>
-        <div class='img-next-control'>
-
-        </div>
+      <div class="imgGal swiper-container cols-xs-26">
+        <div class='img-prev-control' ></div>
+        <div class='img-next-control'></div>
         <?php
         // $gal = get_post_meta(get_the_ID(),'gallery_data',true);
         // foreach ($gal['image_url'] as $img) {
@@ -75,7 +71,9 @@
           $decription = get_sub_field('description_media');
 
           echo '<div class="swiper-slide col-xs-26">';
-          echo '<img src="'.$media['url'].'"/>';
+          echo '<img data-src="'.$media['url'].'" class="swiper-lazy"/>';
+
+          echo '<div class="swiper-lazy-preloader"></div>';
           echo '<h2>'.$decription.'</h2>';
           echo '</div>';
 
