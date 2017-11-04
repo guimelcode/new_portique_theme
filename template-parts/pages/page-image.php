@@ -8,7 +8,7 @@
 $image = get_field('image_page', $post->ID);
 if($image){
   echo "<section class='page-image thePostImages col-xs-offset-3 col-xs-20 col-sm-offset-3 col-sm-20 col-md-20 col-md-20 col-lg-offset-1 col-lg-13'>";
-  echo "<img src='".$image['sizes']['medium']."'/>";
+  echo "<img src='".$image['sizes']['large']."'/>";
   echo "</section>";
 }
  ?>
