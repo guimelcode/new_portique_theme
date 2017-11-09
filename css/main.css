@@ -366,6 +366,12 @@ Bootstrap 4 Media Queries
     /* Pour compenser la présence du dégradé en bas de vue */
     padding-bottom: 70px;
   }
+
+  div.container-fluid div#app.container-fluid div#expositions.row.container-fluid.swiper-container-horizontal div.bxslider.swiper-wrapper div.archives.swiper-slide.swiper-slide-active div.simplebar-scroll-content div.simplebar-content article{
+    z-index: 500 !important;
+    padding-top: 35px;
+  }
+
 }
 
 @media(min-width:1200px){

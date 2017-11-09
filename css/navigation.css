@@ -255,6 +255,9 @@ Bootstrap 4 Media Queries
 }
 
 @media(min-width:768px){
+  .navigation-top {
+      font-size: 1.25vw;
+  }
 
 }
 
@@ -263,7 +266,7 @@ Bootstrap 4 Media Queries
       font-size: 0.6em;
   }
   .navigation-top {
-      font-size: 1.25vw;
+      font-size: 1vw;
       margin-top: 0px !important;
   }
 
