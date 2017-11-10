@@ -224,6 +224,14 @@ h3.temps{
 }
 
 /* - - - - - - - - - -
+ÉVÉNEMENT
+- - - - - - - - - - - */
+/* remove event dates */
+h2.evenement-type ~ h3.temps{
+    display: none;
+}
+
+/* - - - - - - - - - -
 ARCHIVES
 - - - - - - - - - - - */
 .archive-link h1.titre, .archive-link h2.subtitle, .archive-link h3.temps{
