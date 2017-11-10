@@ -226,7 +226,7 @@ h3.temps{
 /* - - - - - - - - - -
 ÉVÉNEMENT
 - - - - - - - - - - - */
-/* remove event dates */
+/* removing event dates */
 h2.evenement-type ~ h3.temps{
     display: none;
 }

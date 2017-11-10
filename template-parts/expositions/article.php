@@ -8,7 +8,7 @@
       <?php
 
       if(get_post_type() === 'evenement'){
-        echo "<h2 class='evenement-type'>Évènement</h2>";
+        echo "<h2 class='evenement-type'>Événement</h2>";
       }
       ?>
       <h3 class="temps"> du
