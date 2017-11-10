@@ -159,6 +159,14 @@ APP
 }
 */
 
+/*
+div#app.container-fluid div.swiper-container-horizontal div.bxslider.swiper-wrapper div.swiper-slide{
+  removing strange padding-top inside swipper-wrapper
+  padding-top:0px;
+}
+*/
+
+
 #app > div > .bxslider > .swiper-slide-active{
   /* what if we use simplebar js library ? */
   /*overflow-y: scroll;*/
@@ -168,8 +176,14 @@ APP
 }
 
 #app > div > div.bxslider > div{
+  padding-top: 0px;
+}
+
+/*
+div#app div.swiper-container-horizontal div.bxslider.swiper-wrapper div.swiper-slide div{
   padding-top: 20px;
 }
+*/
 
 /* - - - - - - - - - -
 ARTICLES
@@ -222,6 +236,11 @@ h3.temps{
 .swiper-slide > h2{
   font-size: 1.7em;
 }
+/* removing strange padding-top on événement à venir */
+.en-cours > div:nth-child(3){
+  padding-top:20px;
+}
+
 
 /* - - - - - - - - - -
 ÉVÉNEMENT
@@ -377,7 +396,7 @@ Bootstrap 4 Media Queries
 
   div.container-fluid div#app.container-fluid div#expositions.row.container-fluid.swiper-container-horizontal div.bxslider.swiper-wrapper div.archives.swiper-slide.swiper-slide-active div.simplebar-scroll-content div.simplebar-content article{
     z-index: 500 !important;
-    padding-top: 35px;
+    padding-top: 20px;
   }
 
 }
