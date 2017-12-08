@@ -399,14 +399,23 @@ Bootstrap 4 Media Queries
     padding-top: 20px;
   }
 
+  /* minimum height for articles sections,  */
+  div.content div.archives-article article.row section.thePostText{
+    min-height:90vh;
+  }
+
+  div.simplebar-track.horizontal{
+    bottom:0px!important;
+  }
+
 }
 
 @media(min-width:1200px){
   /* afficher la grille avec des intrelignages constants */
-  div.archives article section.thePostText{
-    min-height: 35vh;
+/*    min-height: 90vh;
     padding-bottom: 15vh;
   }
+  */
 
   .imgGal{
     position: fixed;
