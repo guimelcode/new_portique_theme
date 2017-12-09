@@ -293,9 +293,23 @@ nav#site-navigation{
     height: 6em;
 }
 
+/* TAILLE TYPO LÉGENDES */
+.simplebar-content h2{
+  font-size: 1.7em;
+}
+
+/* POSITION DES BOUTONS TRADUCTION ÉCRANS LARGES */
+
 ul.sub-menu li.qtranxs-lang-menu-item {
-  position: absolute;
-  float: right;
+  position: relative;
+}
+
+li.traduction ul.sub-menu {
+  line-height: 0em !important;
+}
+
+ul.sub-menu li.qtranxs-lang-menu-item-en{
+  margin-left: -15px;
 }
 
 #app > div > div.bxslider > div {

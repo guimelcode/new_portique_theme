@@ -145,7 +145,19 @@ ul#mobile-footer{
 /* - - - - - - - - - -
 APP
 - - - - - - - - - - - */
+.thePostText a{
+  text-decoration: underline;
+}
 
+
+.thePostText a.archive-link{
+  text-decoration: none !important;
+}
+
+
+div.archives.swiper-slide div.simplebar-scroll-content div.simplebar-content article section.thePostText{
+  text-decoration: none;
+}
 .swiper-button-disabled{
   visibility: hidden;
 }
