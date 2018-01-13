@@ -145,10 +145,9 @@ ul#mobile-footer{
 /* - - - - - - - - - -
 APP
 - - - - - - - - - - - */
-.thePostText a{
+.thePostText a, .mecenat a, .contact-presse a{
   text-decoration: underline;
 }
-
 
 .thePostText a.archive-link{
   text-decoration: none !important;
@@ -373,44 +372,6 @@ Bootstrap 4 Media Queries
 }
 
 @media(min-width:992px){
-  /* Animation blinker */
-
-  @keyframes blinker {
-    50% { opacity: 0; }
-  }
-
-
-  #top-menu > .active > a{
-    border-bottom: solid 1px #00f;
-/*    transition: 0.3s;
-    animation: blinker 1.7s linear infinite; */
-  }
-
-  /* Soulignement qui clignotte, à la même dimension du lien => Js ?
-  #top-menu > .active > a:before {
-  content: "";
-  position: absolute;
-  width: 40%;
-  height: 1px;
-  bottom: 0;
-  left: 0px;
-  border-bottom: 1px solid #00f;
-  transition: 0.4s;
-    animation: blinker 1.7s linear infinite;
-}
-*/
-
-  #top-menu > .active > a{
-    color: #00f !important;
-        animation: blinker 1.7s linear infinite;
-  }
-
- .sub-menu > .active a {
-    color: #00f!important;
-    border-bottom: solid 1px transparent;
-    transition: 0.3s;
-    animation: blinker 1.7s linear infinite;
-  }
 
   .thePostText{
     /* Pour compenser la présence du dégradé en bas de vue */

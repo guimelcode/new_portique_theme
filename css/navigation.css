@@ -16,6 +16,34 @@ NAVIGATION
 /*  font-size: 2.3vw; latest*/
 }
 
+
+/* Animation blinker */
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+#top-menu > .active > a{
+  border-bottom: solid 1px #00f;
+}
+
+#top-menu > .active > a{
+  color: #00f !important;
+      animation: blinker 1.7s linear infinite;
+}
+
+.sub-menu > .active a {
+  color: #00f!important;
+  border-bottom: none;
+  transition: 0.3s;
+  animation: blinker 1.7s linear infinite;
+}
+
+
+
+/* - - - - - */
+
+
 nav#site-navigation{
   padding-top: 1em;
   border-bottom: solid 1px #00f;
