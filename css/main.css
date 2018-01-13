@@ -245,9 +245,16 @@ h3.temps{
 }
 
 /* légende */
-.swiper-slide > h2{
+.simplebar-content h2{
   font-size: 1.7em;
 }
+/* TAILLE TYPO LÉGENDES
+.simplebar-content h2{
+  font-size: 1.7em;
+}
+*/
+
+
 /* removing strange padding-top on événement à venir */
 .en-cours > div:nth-child(3){
   padding-top:20px;

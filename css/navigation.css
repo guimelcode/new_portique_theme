@@ -293,11 +293,6 @@ nav#site-navigation{
     height: 6em;
 }
 
-/* TAILLE TYPO LÉGENDES */
-.simplebar-content h2{
-  font-size: 1.7em;
-}
-
 /* POSITION DES BOUTONS TRADUCTION ÉCRANS LARGES */
 
 ul.sub-menu li.qtranxs-lang-menu-item {
