@@ -207,6 +207,7 @@ nav#site-navigation{
   /*margin: 0 auto;
   display: block;*/
 }
+
 .logo-mobile {
   float: right;
   position: absolute;
@@ -233,6 +234,36 @@ nav#site-navigation{
   transition: transform .8s;
   transform: rotate(-38deg);
 }
+
+/* replacing full lang names to short names on mobile footer menu */
+li.qtranxs-lang-menu-item-fr a{
+  visibility: hidden;
+  width: 0px;
+  display: inline-block;
+}
+
+li.qtranxs-lang-menu-item-fr a::before{
+    visibility: visible;
+  	content: "FR";
+}
+
+li.qtranxs-lang-menu-item-en a{
+  visibility: hidden;
+  width: 0px;
+  display: inline-block;
+}
+
+li.qtranxs-lang-menu-item-en a::before{
+    visibility: visible;
+  	content: "EN";
+}
+
+li.qtranxs-lang-menu-item-en::before{
+  	content: "/";
+    margin: 5px;
+}
+
+
 
 @keyframes lpmove {
   0% {    transform: rotate(0deg);}
@@ -269,9 +300,6 @@ nav#site-navigation{
   width: 100%;
   text-align: center;
 }
-
-
-
 
 
 /* - - - - - - - - - -
