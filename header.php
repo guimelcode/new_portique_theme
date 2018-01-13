@@ -45,7 +45,7 @@
 						</nav><!-- #site-navigation -->
 						<div class="logo-mobile visible-xs-block col-xs-4">
 							<a href="#" class="lp-home">
-								<img id="signature-portique_LP" src="http://leportiq.cluster003.ovh.net/wp-content/themes/portique_theme/portique-interface/bleu/LP/logo-LP.png" alt="logo_Le-Portique_signature_LP">
+								<img id="signature-portique_LP" src="http://leportique.org/wp-content/uploads/2017/11/cropped-logo-LP.png" alt="logo_Le-Portique_signature_LP">
 							</a>
 						</div>
 					</div><!-- .wrap -->

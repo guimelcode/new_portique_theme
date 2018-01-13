@@ -214,6 +214,10 @@ h3.temps{
 }
 
 /* À VENIR (article-mini) */
+section.article_mini{
+  margin-bottom: 7em;
+}
+
 .a-venir h1{
   text-transform: uppercase;
   font-size: 5em;
@@ -221,7 +225,7 @@ h3.temps{
 }
 
 .a-venir h2{
-  font-size: 2.8em;
+  font-size: 2.8em!important;
   line-height: 1em;
 }
 
@@ -425,6 +429,11 @@ Bootstrap 4 Media Queries
 
   div.simplebar-track.horizontal{
     bottom:0px!important;
+  }
+
+  .a-venir h2{
+    font-size: 4em!important;
+    line-height: 1em;
   }
 
 }

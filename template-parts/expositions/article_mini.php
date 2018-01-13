@@ -3,10 +3,8 @@
     <header>
       <h1 class="titre"><?php echo get_the_title(); ?></h1>
       <h2 class="subtitle"><?php echo get_field("sous-titre"); ?></h2>
-       <h3 class="temps"> du
-        <time ><?php echo templateFormatDate(get_post_meta( get_the_ID(), 'date_debut_exposition', true )); ?></time>
-        au
-        <time ><?php echo templateFormatDate(get_post_meta( get_the_ID(), 'date_fin_exposition', true )); ?></time>
+       <h3 class="temps">du&nbsp;<time ><?php echo templateFormatDate(get_post_meta( get_the_ID(), 'date_debut_exposition', true )); ?></time>
+        au&nbsp;<time ><?php echo templateFormatDate(get_post_meta( get_the_ID(), 'date_fin_exposition', true )); ?></time>
       </h3>
     </header>
     <main>
