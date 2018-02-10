@@ -236,29 +236,29 @@ nav#site-navigation{
 }
 
 /* replacing full lang names to short names on mobile footer menu */
-li.qtranxs-lang-menu-item-fr a{
+ul#mobile-footer li.qtranxs-lang-menu-item-fr a{
   visibility: hidden;
   width: 0px;
   display: inline-block;
 }
 
-li.qtranxs-lang-menu-item-fr a::before{
+ul#mobile-footer li.qtranxs-lang-menu-item-fr a::before{
     visibility: visible;
   	content: "FR";
 }
 
-li.qtranxs-lang-menu-item-en a{
+ul#mobile-footer li.qtranxs-lang-menu-item-en a{
   visibility: hidden;
   width: 0px;
   display: inline-block;
 }
 
-li.qtranxs-lang-menu-item-en a::before{
+ul#mobile-footer li.qtranxs-lang-menu-item-en a::before{
     visibility: visible;
   	content: "EN";
 }
 
-li.qtranxs-lang-menu-item-en::before{
+ul#mobile-footer li.qtranxs-lang-menu-item-en::before{
   	content: "/";
     margin: 5px;
 }
