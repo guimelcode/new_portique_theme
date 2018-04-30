@@ -158,6 +158,14 @@ export function Archives() {
   let rub = 'archives';
   let archivesHover = $('.archives-hover');
   // archivesHover.hide();
+  $('.archives .simplebar-scroll-content').scroll(function(){
+    console.log($('.archives .simplebar-scroll-content').scrollTop());
+    // console.log($('.archives .simplebar-content').scrollTop());
+    // console.log($('.archives .simplebar-content').outerHeight());
+    console.log($('.archives .simplebar-content').innerHeight());
+    // console.log($('.archives .simplebar-content'));
+
+  })
   archivesLink.click(function(e) {
     e.preventDefault();
     let postID = $(this).attr("postID");
@@ -173,6 +181,7 @@ export function Archives() {
     let archivesArticle = $('.archives').children().eq(1);
 
     console.log(archivesArticle);
+
     // archivesArticle.slideDown();
     //  archivesArticle.slideUp();
 

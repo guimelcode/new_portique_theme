@@ -60,7 +60,10 @@ if ( $ajax_query->have_posts() ) : while ( $ajax_query->have_posts() ) : $ajax_q
 
 get_template_part( 'template-parts/expositions/cell' );
 $counter++;
-// var_dump(get_the_title()) ;
+ // var_dump(get_the_title()) ;
+ // var_dump($ajax_query->have_posts()) ;
+
+ echo $ajax_query->max_num_pages;
 
 endwhile;
 endif;
@@ -76,6 +79,7 @@ function date_test(){
   $today = date( "Ymd" );
 
   $archive = array(
+  //  'posts_per_page' => -1,
     'post_type'    => 'exposition',
     'meta_query' => array(
       'relation' => 'AND',

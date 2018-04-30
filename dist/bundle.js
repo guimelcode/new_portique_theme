@@ -1458,6 +1458,13 @@ function Archives() {
   var rub = 'archives';
   var archivesHover = $('.archives-hover');
   // archivesHover.hide();
+  $('.archives .simplebar-scroll-content').scroll(function () {
+    console.log($('.archives .simplebar-scroll-content').scrollTop());
+    // console.log($('.archives .simplebar-content').scrollTop());
+    // console.log($('.archives .simplebar-content').outerHeight());
+    console.log($('.archives .simplebar-content').innerHeight());
+    // console.log($('.archives .simplebar-content'));
+  });
   archivesLink.click(function (e) {
     e.preventDefault();
     var postID = $(this).attr("postID");
@@ -1473,6 +1480,7 @@ function Archives() {
     var archivesArticle = $('.archives').children().eq(1);
 
     console.log(archivesArticle);
+
     // archivesArticle.slideDown();
     //  archivesArticle.slideUp();
 
